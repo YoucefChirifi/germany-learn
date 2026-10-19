@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>German Alphabet – Learn & Practice</title>
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+  @keyframes pop {
+    0%   { transform: scale(0.6); opacity: 0; }
+    60%  { transform: scale(1.08); opacity: 1; }
+    100% { transform: scale(1); }
+  }
+  .pop { animation: pop .35s ease-out; }
+
+  @keyframes tap {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(0.93); }
+    100% { transform: scale(1); }
+  }
+  .tap { animation: tap .2s ease-out; }
+
+  @keyframes fadeUp {
+    0%   { opacity: 0; transform: translateY(4px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { animation: fadeUp .25s ease-out; }
+</style>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900
+             p-4 text-white">
+
+  <div class="mx-auto max-w-4xl space-y-6 py-6">
+
+    <!-- ================= HEADER ================= -->
+    <header class="text-center">
+      <h1 class="text-3xl font-black tracking-tight sm:text-4xl">Das deutsche Alphabet</h1>
+      <p class="mt-2 text-sm text-white/60">
+        Learn the letters, hear the pronunciation, practice out loud 🇩🇪
+      </p>
+    </header>
+
+    <!-- ================= SECTION 1: RANDOM PRACTICE ================= -->
+    <section class="rounded-3xl border border-white/20 bg-white/10 p-6 shadow-2xl backdrop-blur sm:p-8">
+
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <h2 class="text-lg font-bold text-white/80">🎲 Random Practice</h2>
+        <span class="text-xs text-white/40">Tap a letter to reveal &amp; hear it</span>
+      </div>
+
+      <!-- Count selector -->
+      <div class="mt-5">
+        <label class="text-xs uppercase tracking-wider text-white/50">How many letters?</label>
+        <div class="mt-2 flex flex-wrap gap-2">
+          <button data-count="1"  class="count-btn rounded-lg bg-amber-400 px-4 py-2 text-sm font-bold text-slate-900 transition hover:bg-amber-300">1</button>
+          <button data-count="3"  class="count-btn rounded-lg bg-white/10 px-4 py-2 text-sm font-semibold transition hover:bg-white/20">3</button>
+          <button data-count="5"  class="count-btn rounded-lg bg-white/10 px-4 py-2 text-sm font-semibold transition hover:bg-white/20">5</button>
+          <button data-count="10" class="count-btn rounded-lg bg-white/10 px-4 py-2 text-sm font-semibold transition hover:bg-white/20">10</button>
+          <button data-count="15" class="count-btn rounded-lg bg-white/10 px-4 py-2 text-sm font-semibold transition hover:bg-white/20">15</button>
+        </div>
+      </div>
+
+      <!-- Generate button -->
+      <button id="generateBtn"
+        class="mt-4 w-full rounded-xl bg-amber-400 py-3 text-lg font-bold text-slate-900
+               transition hover:bg-amber-300 active:scale-95">
+        🎲 Generate
+      </button>
+
+      <!-- Results -->
+      <div id="results" class="mt-6 min-h-[120px]"></div>
+
+      <p class="mt-4 text-center text-xs text-white/40">Tip: press the space bar to regenerate</p>
+    </section>
+
+    <!-- ================= SECTION 2: THE ALPHABET ================= -->
+    <section class="rounded-3xl border border-white/20 bg-white/10 p-6 shadow-xl backdrop-blur">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <h2 class="text-xl font-bold">📖 The Alphabet</h2>
+        <span class="text-xs text-white/40">Tap any letter to hear it</span>
+      </div>
+
+      <div id="alphabetGrid"
+           class="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-6"></div>
+
+      <h3 class="mt-8 mb-3 text-lg font-bold text-amber-300">Four Special Characters</h3>
+
+      <div class="grid gap-3 sm:grid-cols-2">
+        <button data-speak="Ä" class="group rounded-xl bg-white/5 p-4 text-left ring-1 ring-white/10 transition hover:bg-white/10">
+          <div class="flex items-center justify-between">
+            <span class="text-3xl font-black">Ä ä</span>
+            <span class="text-lg opacity-60 group-hover:opacity-100">🔊</span>
+          </div>
+          <p class="mt-2 text-sm text-white/70">Similar to the vowel in “bed”</p>
+          <p class="mt-1 text-xs text-amber-300">Mädchen (girl)</p>
+        </button>
+
+        <button data-speak="Ö" class="group rounded-xl bg-white/5 p-4 text-left ring-1 ring-white/10 transition hover:bg-white/10">
+          <div class="flex items-center justify-between">
+            <span class="text-3xl font-black">Ö ö</span>
+            <span class="text-lg opacity-60 group-hover:opacity-100">🔊</span>
+          </div>
+          <p class="mt-2 text-sm text-white/70">Say “eh” with rounded lips</p>
+          <p class="mt-1 text-xs text-amber-300">schön (beautiful)</p>
+        </button>
+
+        <button data-speak="Ü" class="group rounded-xl bg-white/5 p-4 text-left ring-1 ring-white/10 transition hover:bg-white/10">
+          <div class="flex items-center justify-between">
+            <span class="text-3xl font-black">Ü ü</span>
+            <span class="text-lg opacity-60 group-hover:opacity-100">🔊</span>
+          </div>
+          <p class="mt-2 text-sm text-white/70">Say “ee” with rounded lips</p>
+          <p class="mt-1 text-xs text-amber-300">über (over)</p>
+        </button>
+
+        <button data-speak="ß" class="group rounded-xl bg-white/5 p-4 text-left ring-1 ring-white/10 transition hover:bg-white/10">
+          <div class="flex items-center justify-between">
+            <span class="text-3xl font-black">ß</span>
+            <span class="text-lg opacity-60 group-hover:opacity-100">🔊</span>
+          </div>
+          <p class="mt-2 text-sm text-white/70">Sounds like “ss”</p>
+          <p class="mt-1 text-xs text-amber-300">Straße (street)</p>
+        </button>
+      </div>
+    </section>
+
+    <!-- ================= SECTION 3: PRONUNCIATION RULES ================= -->
+    <section class="rounded-3xl border border-white/20 bg-white/10 p-6 shadow-xl backdrop-blur">
+      <h2 class="mb-4 text-xl font-bold">📏 Pronunciation Rules to Remember</h2>
+
+      <div class="overflow-x-auto rounded-xl ring-1 ring-white/10">
+        <table class="w-full text-left text-sm">
+          <thead class="bg-white/10 text-white/70">
+            <tr>
+              <th class="px-4 py-2 font-semibold">German</th>
+              <th class="px-4 py-2 font-semibold">Simple rule</th>
+              <th class="px-4 py-2 font-semibold">Example</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/10">
+            <tr class="hover:bg-white/5">
+              <td class="px-4 py-2 font-bold text-amber-300">W</td>
+              <td class="px-4 py-2 text-white/80">Sounds like English V</td>
+              <td class="px-4 py-2">Wasser (water)</td>
+            </tr>
+            <tr class="hover:bg-white/5">
+              <td class="px-4 py-2 font-bold text-amber-300">V</td>
+              <td class="px-4 py-2 text-white/80">Often sounds like F</td>
+              <td class="px-4 py-2">Vater (father)</td>
+            </tr>
+            <tr class="hover:bg-white/5">
+              <td class="px-4 py-2 font-bold text-amber-300">J</td>
+              <td class="px-4 py-2 text-white/80">Sounds like English Y</td>
+              <td class="px-4 py-2">Ja (yes)</td>
+            </tr>
+            <tr class="hover:bg-white/5">
+              <td class="px-4 py-2 font-bold text-amber-300">Z</td>
+              <td class="px-4 py-2 text-white/80">Sounds like TS</td>
+              <td class="px-4 py-2">Zeit (time)</td>
+            </tr>
+            <tr class="hover:bg-white/5">
+              <td class="px-4 py-2 font-bold text-amber-300">EI</td>
+              <td class="px-4 py-2 text-white/80">Sounds like English eye</td>
+              <td class="px-4 py-2">mein (my)</td>
+            </tr>
+            <tr class="hover:bg-white/5">
+              <td class="px-4 py-2 font-bold text-amber-300">IE</td>
+              <td class="px-4 py-2 text-white/80">Sounds like a long “ee”</td>
+              <td class="px-4 py-2">Liebe (love)</td>
+            </tr>
+            <tr class="hover:bg-white/5">
+              <td class="px-4 py-2 font-bold text-amber-300">SCH</td>
+              <td class="px-4 py-2 text-white/80">Sounds like English “sh”</td>
+              <td class="px-4 py-2">Schule (school)</td>
+            </tr>
+            <tr class="hover:bg-white/5">
+              <td class="px-4 py-2 font-bold text-amber-300">CH</td>
+              <td class="px-4 py-2 text-white/80">Special German sound; varies by vowel</td>
+              <td class="px-4 py-2">ich (I)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ================= SECTION 4: MINI PRACTICE ================= -->
+    <section class="rounded-3xl border border-white/20 bg-white/10 p-6 shadow-xl backdrop-blur">
+      <h2 class="mb-1 text-xl font-bold">🗣️ Mini-Practice</h2>
+      <p class="mb-4 text-sm text-white/60">Read these words aloud, then tap 🔊 to check yourself.</p>
+
+      <div class="grid gap-3 sm:grid-cols-2">
+        <button data-speak="Ja" class="group flex items-center justify-between rounded-xl bg-white/5 px-4 py-3 text-left ring-1 ring-white/10 transition hover:bg-white/10">
+          <span><span class="font-bold text-amber-300">Ja</span> <span class="text-white/60">— yes</span></span>
+          <span class="text-lg opacity-60 group-hover:opacity-100">🔊</span>
+        </button>
+        <button data-speak="Nein" class="group flex items-center justify-between rounded-xl bg-white/5 px-4 py-3 text-left ring-1 ring-white/10 transition hover:bg-white/10">
+          <span><span class="font-bold text-amber-300">Nein</span> <span class="text-white/60">— no</span></span>
+          <span class="text-lg opacity-60 group-hover:opacity-100">🔊</span>
+        </button>
+        <button data-speak="Wasser" class="group flex items-center justify-between rounded-xl bg-white/5 px-4 py-3 text-left ring-1 ring-white/10 transition hover:bg-white/10">
+          <span><span class="font-bold text-amber-300">Wasser</span> <span class="text-white/60">— water</span></span>
+          <span class="text-lg opacity-60 group-hover:opacity-100">🔊</span>
+        </button>
+        <button data-speak="Zeit" class="group flex items-center justify-between rounded-xl bg-white/5 px-4 py-3 text-left ring-1 ring-white/10 transition hover:bg-white/10">
+          <span><span class="font-bold text-amber-300">Zeit</span> <span class="text-white/60">— time</span></span>
+          <span class="text-lg opacity-60 group-hover:opacity-100">🔊</span>
+        </button>
+        <button data-speak="Schule" class="group flex items-center justify-between rounded-xl bg-white/5 px-4 py-3 text-left ring-1 ring-white/10 transition hover:bg-white/10 sm:col-span-2">
+          <span><span class="font-bold text-amber-300">Schule</span> <span class="text-white/60">— school</span></span>
+          <span class="text-lg opacity-60 group-hover:opacity-100">🔊</span>
+        </button>
+      </div>
+    </section>
+
+    <p class="pb-4 text-center text-xs text-white/30">Viel Erfolg beim Lernen! 🇩🇪</p>
+  </div>
+
+<script>
+  /* =========================================================
+     DATA
+     ========================================================= */
+  const ALPHABET = [
+    { letter: "A", name: "ah" },
+    { letter: "B", name: "bay" },
+    { letter: "C", name: "tsay" },
+    { letter: "D", name: "day" },
+    { letter: "E", name: "ay" },
+    { letter: "F", name: "eff" },
+    { letter: "G", name: "gay" },
+    { letter: "H", name: "hah" },
+    { letter: "I", name: "ee" },
+    { letter: "J", name: "yot" },
+    { letter: "K", name: "kah" },
+    { letter: "L", name: "ell" },
+    { letter: "M", name: "em" },
+    { letter: "N", name: "en" },
+    { letter: "O", name: "oh" },
+    { letter: "P", name: "pay" },
+    { letter: "Q", name: "koo" },
+    { letter: "R", name: "err" },
+    { letter: "S", name: "ess" },
+    { letter: "T", name: "tay" },
+    { letter: "U", name: "oo" },
+    { letter: "V", name: "fow" },
+    { letter: "W", name: "vay" },
+    { letter: "X", name: "iks" },
+    { letter: "Y", name: "üpsilon" },
+    { letter: "Z", name: "tset" }
+  ];
+
+  /* =========================================================
+     ELEMENTS
+     ========================================================= */
+  const resultsEl    = document.getElementById("results");
+  const generateBtn  = document.getElementById("generateBtn");
+  const alphabetGrid = document.getElementById("alphabetGrid");
+
+  let selectedCount = 1;
+
+  /* =========================================================
+     SPEECH
+     ========================================================= */
+  let germanVoice = null;
+
+  function loadVoices() {
+    const voices = window.speechSynthesis.getVoices();
+    germanVoice =
+      voices.find(v => v.lang && v.lang.toLowerCase().startsWith("de")) || null;
+  }
+
+  if ("speechSynthesis" in window) {
+    loadVoices();
+    window.speechSynthesis.onvoiceschanged = loadVoices;
+  }
+
+  function speak(text) {
+    if (!("speechSynthesis" in window)) {
+      alert("Sorry, your browser does not support speech.");
+      return;
+    }
+    window.speechSynthesis.cancel();
+
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang  = "de-DE";
+    utter.rate  = 0.8;
+    utter.pitch = 1;
+    if (germanVoice) utter.voice = germanVoice;
+
+    window.speechSynthesis.speak(utter);
+  }
+
+  /* =========================================================
+     RANDOM PRACTICE
+     ========================================================= */
+  function pickRandom(n) {
+    const pool = [...ALPHABET];
+    for (let i = pool.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [pool[i], pool[j]] = [pool[j], pool[i]];
+    }
+    return pool.slice(0, Math.min(n, pool.length));
+  }
+
+  function makeCard({ letter, name }, isLarge) {
+    const btn = document.createElement("button");
+    btn.className = isLarge
+      ? "result-card group relative flex w-full max-w-xs flex-col items-center justify-center rounded-2xl bg-white/5 py-12 ring-1 ring-white/10 transition hover:bg-white/10 hover:ring-amber-300/40 active:scale-95"
+      : "result-card group relative flex flex-col items-center justify-center rounded-2xl bg-white/5 py-6 ring-1 ring-white/10 transition hover:bg-white/10 hover:ring-amber-300/40 active:scale-95";
+
+    btn.innerHTML = `
+      <span class="result-letter ${isLarge ? "text-8xl" : "text-5xl"} font-black leading-none pop">${letter}</span>
+      <span class="result-name mt-2 ${isLarge ? "text-lg" : "text-sm"} h-6 font-semibold text-amber-300"></span>
+      <span class="absolute bottom-1.5 right-2 text-[10px] text-white/30 group-hover:text-white/60">🔊</span>
+    `;
+
+    btn.addEventListener("click", () => {
+      const nameEl = btn.querySelector(".result-name");
+      if (!nameEl.textContent) {
+        nameEl.textContent = "“" + name + "”";
+        nameEl.classList.add("fade-up");
+      }
+      speak(letter);
+
+      // press feedback
+      btn.classList.remove("tap");
+      void btn.offsetWidth;
+      btn.classList.add("tap");
+    });
+
+    return btn;
+  }
+
+  function renderResults(letters) {
+    resultsEl.innerHTML = "";
+
+    if (letters.length === 1) {
+      resultsEl.className = "mt-6 flex justify-center";
+      resultsEl.appendChild(makeCard(letters[0], true));
+    } else {
+      resultsEl.className =
+        "mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5";
+      letters.forEach(item => resultsEl.appendChild(makeCard(item, false)));
+    }
+  }
+
+  function generate() {
+    renderResults(pickRandom(selectedCount));
+  }
+
+  /* =========================================================
+     COUNT BUTTONS
+     ========================================================= */
+  const countBtns = document.querySelectorAll(".count-btn");
+
+  function setActiveCount(btn) {
+    countBtns.forEach(b => {
+      b.classList.remove("bg-amber-400", "text-slate-900", "font-bold");
+      b.classList.add("bg-white/10", "font-semibold", "text-white");
+    });
+    btn.classList.remove("bg-white/10", "font-semibold", "text-white");
+    btn.classList.add("bg-amber-400", "text-slate-900", "font-bold");
+  }
+
+  countBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      selectedCount = parseInt(btn.dataset.count, 10);
+      setActiveCount(btn);
+      generate(); // auto-regenerate when count changes
+    });
+  });
+
+  /* =========================================================
+     GENERATE BUTTON + SPACE BAR
+     ========================================================= */
+  generateBtn.addEventListener("click", generate);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.code === "Space") {
+      e.preventDefault();
+      generate();
+    }
+  });
+
+  /* =========================================================
+     FULL ALPHABET GRID
+     ========================================================= */
+  ALPHABET.forEach(({ letter, name }) => {
+    const btn = document.createElement("button");
+    btn.className =
+      "group flex flex-col items-center justify-center rounded-xl " +
+      "bg-white/5 py-3 ring-1 ring-white/10 transition hover:bg-white/10 " +
+      "hover:ring-amber-300/50 active:scale-95";
+    btn.innerHTML = `
+      <span class="text-3xl font-black leading-none">${letter}</span>
+      <span class="mt-1 text-[11px] uppercase tracking-wide text-white/50">${name}</span>
+    `;
+    btn.addEventListener("click", () => {
+      speak(letter);
+      btn.classList.remove("tap");
+      void btn.offsetWidth;
+      btn.classList.add("tap");
+    });
+    alphabetGrid.appendChild(btn);
+  });
+
+  /* =========================================================
+     SPEAK BUTTONS (special chars + practice words)
+     ========================================================= */
+  document.querySelectorAll("[data-speak]").forEach(btn => {
+    btn.addEventListener("click", () => speak(btn.dataset.speak));
+  });
+
+  /* =========================================================
+     INITIAL RENDER
+     ========================================================= */
+  setActiveCount(countBtns[0]); // count = 1 is active by default
+  generate();
+</script>
+</body>
+</html>
