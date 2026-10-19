@@ -3,14 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>German Alphabet & Top 100 Words</title>
+<title>German Learning – Alphabet & Words</title>
 
 <!-- Tailwind CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-  html { scroll-behavior: smooth; }
-
   @keyframes pop {
     0%   { transform: scale(0.6); opacity: 0; }
     60%  { transform: scale(1.08); opacity: 1; }
@@ -26,14 +24,13 @@
   .tap { animation: tap .2s ease-out; }
 
   @keyframes fadeUp {
-    0%   { opacity: 0; transform: translateY(4px); }
+    0%   { opacity: 0; transform: translateY(6px); }
     100% { opacity: 1; transform: translateY(0); }
   }
-  .fade-up { animation: fadeUp .25s ease-out; }
+  .fade-up { animation: fadeUp .3s ease-out; }
 
-  /* active nav link */
   .nav-link.active {
-    background-color: rgba(255, 255, 255, 0.12);
+    background-color: rgba(251, 191, 36, 0.15);
     color: #fbbf24;
   }
 </style>
@@ -43,23 +40,22 @@
              text-white">
 
   <!-- =========================================================
-       NAVIGATION (sticky, responsive)
+       NAVIGATION
        ========================================================= -->
   <nav class="sticky top-0 z-50 border-b border-white/10 bg-slate-900/80 backdrop-blur-md">
     <div class="mx-auto flex max-w-4xl items-center justify-between gap-2 px-4 py-3">
 
-      <a href="#top" class="text-lg font-black tracking-tight">🇩🇪 Deutsch</a>
+      <a href="#home" data-nav class="text-lg font-black tracking-tight">🇩🇪 Deutsch</a>
 
-      <!-- Desktop links -->
+      <!-- Desktop -->
       <ul class="hidden items-center gap-1 text-sm md:flex">
-        <li><a href="#random-letters" data-nav-link="random-letters" class="nav-link rounded-lg px-3 py-2 text-white/70 transition hover:bg-white/10 hover:text-white">🎲 Letters</a></li>
-        <li><a href="#alphabet"       data-nav-link="alphabet"       class="nav-link rounded-lg px-3 py-2 text-white/70 transition hover:bg-white/10 hover:text-white">📖 Alphabet</a></li>
-        <li><a href="#words"          data-nav-link="words"          class="nav-link rounded-lg px-3 py-2 text-white/70 transition hover:bg-white/10 hover:text-white">💬 Words</a></li>
-        <li><a href="#rules"          data-nav-link="rules"          class="nav-link rounded-lg px-3 py-2 text-white/70 transition hover:bg-white/10 hover:text-white">📏 Rules</a></li>
-        <li><a href="#practice"       data-nav-link="practice"       class="nav-link rounded-lg px-3 py-2 text-white/70 transition hover:bg-white/10 hover:text-white">🗣️ Practice</a></li>
+        <li><a href="#home"      data-nav class="nav-link rounded-lg px-3 py-2 text-white/70 transition hover:bg-white/10 hover:text-white">🏠 Home</a></li>
+        <li><a href="#alphabet"  data-nav class="nav-link rounded-lg px-3 py-2 text-white/70 transition hover:bg-white/10 hover:text-white">📖 Alphabet</a></li>
+        <li><a href="#words"     data-nav class="nav-link rounded-lg px-3 py-2 text-white/70 transition hover:bg-white/10 hover:text-white">💬 Words</a></li>
+        <li><a href="#rules"     data-nav class="nav-link rounded-lg px-3 py-2 text-white/70 transition hover:bg-white/10 hover:text-white">📏 Rules</a></li>
+        <li><a href="#practice"  data-nav class="nav-link rounded-lg px-3 py-2 text-white/70 transition hover:bg-white/10 hover:text-white">🗣️ Practice</a></li>
       </ul>
 
-      <!-- Mobile hamburger -->
       <button id="menuBtn" aria-label="Open menu" aria-expanded="false"
         class="rounded-lg bg-white/10 px-3 py-2 text-lg leading-none transition hover:bg-white/20 active:scale-95 md:hidden">
         ☰
@@ -68,164 +64,213 @@
 
     <!-- Mobile dropdown -->
     <ul id="mobileMenu" class="hidden space-y-1 border-t border-white/10 px-4 pb-4 pt-2 text-sm md:hidden">
-      <li><a href="#random-letters" class="block rounded-lg px-3 py-2.5 text-white/80 transition hover:bg-white/10">🎲 Random Letters</a></li>
-      <li><a href="#alphabet"       class="block rounded-lg px-3 py-2.5 text-white/80 transition hover:bg-white/10">📖 The Alphabet</a></li>
-      <li><a href="#words"          class="block rounded-lg px-3 py-2.5 text-white/80 transition hover:bg-white/10">💬 Top 100 Words</a></li>
-      <li><a href="#rules"          class="block rounded-lg px-3 py-2.5 text-white/80 transition hover:bg-white/10">📏 Pronunciation Rules</a></li>
-      <li><a href="#practice"       class="block rounded-lg px-3 py-2.5 text-white/80 transition hover:bg-white/10">🗣️ Mini Practice</a></li>
+      <li><a href="#home"      class="block rounded-lg px-3 py-2.5 text-white/80 transition hover:bg-white/10">🏠 Home</a></li>
+      <li><a href="#alphabet"  class="block rounded-lg px-3 py-2.5 text-white/80 transition hover:bg-white/10">📖 Alphabet</a></li>
+      <li><a href="#words"     class="block rounded-lg px-3 py-2.5 text-white/80 transition hover:bg-white/10">💬 Words</a></li>
+      <li><a href="#rules"     class="block rounded-lg px-3 py-2.5 text-white/80 transition hover:bg-white/10">📏 Rules</a></li>
+      <li><a href="#practice"  class="block rounded-lg px-3 py-2.5 text-white/80 transition hover:bg-white/10">🗣️ Practice</a></li>
     </ul>
   </nav>
 
-  <!-- =========================================================
-       MAIN
-       ========================================================= -->
-  <main id="top" class="mx-auto max-w-4xl space-y-6 px-4 py-6">
-
-    <!-- ===== HEADER ===== -->
-    <header class="text-center">
-      <h1 class="text-3xl font-black tracking-tight sm:text-4xl">Das deutsche Alphabet</h1>
-      <p class="mx-auto mt-2 max-w-md text-sm text-white/60">
-        Learn the letters, master the top 100 words, hear the pronunciation — all in one page 🇩🇪
-      </p>
-    </header>
+  <main class="mx-auto max-w-4xl px-4 py-6">
 
     <!-- =========================================================
-         SECTION 1 — RANDOM LETTER PRACTICE
+         VIEW: HOME
          ========================================================= -->
-    <section id="random-letters" data-nav class="scroll-mt-20 rounded-3xl border border-white/20 bg-white/10 p-6 shadow-2xl backdrop-blur sm:p-8">
-
-      <div class="flex flex-wrap items-center justify-between gap-2">
-        <h2 class="text-lg font-bold text-white/80">🎲 Random Letter Practice</h2>
-        <span class="text-xs text-white/40">Reveal &amp; hear with “Hear it”</span>
+    <section id="home" data-view class="space-y-8">
+      <div class="fade-up text-center">
+        <h1 class="text-4xl font-black tracking-tight sm:text-5xl">Willkommen! 👋</h1>
+        <p class="mx-auto mt-3 max-w-md text-white/60">
+          Your German learning companion — pronounce every letter, master the top 100 words, and pick up the key rules.
+        </p>
       </div>
 
-      <!-- Count selector -->
-      <div class="mt-5">
-        <label class="text-xs uppercase tracking-wider text-white/50">How many letters?</label>
-        <div class="mt-2 flex flex-wrap gap-2">
-          <button data-count="1"  class="count-btn rounded-lg bg-amber-400 px-4 py-2 text-sm font-bold text-slate-900 transition hover:bg-amber-300">1</button>
-          <button data-count="3"  class="count-btn rounded-lg bg-white/10 px-4 py-2 text-sm font-semibold transition hover:bg-white/20">3</button>
-          <button data-count="5"  class="count-btn rounded-lg bg-white/10 px-4 py-2 text-sm font-semibold transition hover:bg-white/20">5</button>
-          <button data-count="10" class="count-btn rounded-lg bg-white/10 px-4 py-2 text-sm font-semibold transition hover:bg-white/20">10</button>
-          <button data-count="15" class="count-btn rounded-lg bg-white/10 px-4 py-2 text-sm font-semibold transition hover:bg-white/20">15</button>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <a href="#alphabet" class="group rounded-3xl border border-white/15 bg-white/5 p-6 transition hover:border-amber-300/40 hover:bg-white/10">
+          <div class="text-4xl">📖</div>
+          <h2 class="mt-3 text-xl font-bold group-hover:text-amber-300">The Alphabet</h2>
+          <p class="mt-1 text-sm text-white/60">Learn all 26 letters, 4 special characters, and practice randomly.</p>
+        </a>
+
+        <a href="#words" class="group rounded-3xl border border-white/15 bg-white/5 p-6 transition hover:border-amber-300/40 hover:bg-white/10">
+          <div class="text-4xl">💬</div>
+          <h2 class="mt-3 text-xl font-bold group-hover:text-amber-300">Top 100 Words</h2>
+          <p class="mt-1 text-sm text-white/60">The most-used German words with English and Arabic meanings.</p>
+        </a>
+
+        <a href="#rules" class="group rounded-3xl border border-white/15 bg-white/5 p-6 transition hover:border-amber-300/40 hover:bg-white/10">
+          <div class="text-4xl">📏</div>
+          <h2 class="mt-3 text-xl font-bold group-hover:text-amber-300">Pronunciation Rules</h2>
+          <p class="mt-1 text-sm text-white/60">Eight essential rules — W, V, J, Z, EI, IE, SCH, CH.</p>
+        </a>
+
+        <a href="#practice" class="group rounded-3xl border border-white/15 bg-white/5 p-6 transition hover:border-amber-300/40 hover:bg-white/10">
+          <div class="text-4xl">🗣️</div>
+          <h2 class="mt-3 text-xl font-bold group-hover:text-amber-300">Mini Practice</h2>
+          <p class="mt-1 text-sm text-white/60">Read common words aloud and check yourself with audio.</p>
+        </a>
+      </div>
+
+      <p class="text-center text-xs text-white/30">Tip: use the menu above to jump between sections.</p>
+    </section>
+
+    <!-- =========================================================
+         VIEW: ALPHABET
+         ========================================================= -->
+    <section id="alphabet" data-view class="hidden space-y-6">
+
+      <header class="fade-up">
+        <h1 class="text-3xl font-black tracking-tight">📖 The Alphabet</h1>
+        <p class="mt-1 text-sm text-white/60">Practice randomly, then explore every letter.</p>
+      </header>
+
+      <!-- Random letter practice -->
+      <div class="rounded-3xl border border-white/20 bg-white/10 p-6 shadow-2xl backdrop-blur sm:p-8">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <h2 class="text-lg font-bold text-white/80">🎲 Random Letter Practice</h2>
+          <span class="text-xs text-white/40">Reveal &amp; hear with “Hear it”</span>
+        </div>
+
+        <div class="mt-5">
+          <label class="text-xs uppercase tracking-wider text-white/50">How many letters?</label>
+          <div class="mt-2 flex flex-wrap gap-2">
+            <button data-count="1"  class="count-btn rounded-lg bg-amber-400 px-4 py-2 text-sm font-bold text-slate-900 transition hover:bg-amber-300">1</button>
+            <button data-count="3"  class="count-btn rounded-lg bg-white/10 px-4 py-2 text-sm font-semibold transition hover:bg-white/20">3</button>
+            <button data-count="5"  class="count-btn rounded-lg bg-white/10 px-4 py-2 text-sm font-semibold transition hover:bg-white/20">5</button>
+            <button data-count="10" class="count-btn rounded-lg bg-white/10 px-4 py-2 text-sm font-semibold transition hover:bg-white/20">10</button>
+            <button data-count="15" class="count-btn rounded-lg bg-white/10 px-4 py-2 text-sm font-semibold transition hover:bg-white/20">15</button>
+          </div>
+        </div>
+
+        <button id="generateBtn"
+          class="mt-4 w-full rounded-xl bg-amber-400 py-3 text-lg font-bold text-slate-900
+                 transition hover:bg-amber-300 active:scale-95">
+          🎲 Generate Letters
+        </button>
+
+        <div id="letterResults" class="mt-6 min-h-[120px]"></div>
+
+        <p class="mt-4 text-center text-xs text-white/40">Tip: press the space bar to regenerate</p>
+      </div>
+
+      <!-- Full alphabet grid -->
+      <div class="rounded-3xl border border-white/20 bg-white/10 p-6 shadow-xl backdrop-blur">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <h2 class="text-xl font-bold">Full Alphabet</h2>
+          <span class="text-xs text-white/40">Tap any letter to hear it</span>
+        </div>
+
+        <div id="alphabetGrid" class="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-6"></div>
+
+        <h3 class="mb-3 mt-8 text-lg font-bold text-amber-300">Four Special Characters</h3>
+
+        <div class="grid gap-3 sm:grid-cols-2">
+          <button data-speak="Ä" class="group rounded-xl bg-white/5 p-4 text-left ring-1 ring-white/10 transition hover:bg-white/10">
+            <div class="flex items-center justify-between">
+              <span class="text-3xl font-black">Ä ä</span>
+              <span class="text-lg opacity-60 group-hover:opacity-100">🔊</span>
+            </div>
+            <p class="mt-2 text-sm text-white/70">Similar to the vowel in “bed”</p>
+            <p class="mt-1 text-xs text-amber-300">Mädchen (girl)</p>
+          </button>
+
+          <button data-speak="Ö" class="group rounded-xl bg-white/5 p-4 text-left ring-1 ring-white/10 transition hover:bg-white/10">
+            <div class="flex items-center justify-between">
+              <span class="text-3xl font-black">Ö ö</span>
+              <span class="text-lg opacity-60 group-hover:opacity-100">🔊</span>
+            </div>
+            <p class="mt-2 text-sm text-white/70">Say “eh” with rounded lips</p>
+            <p class="mt-1 text-xs text-amber-300">schön (beautiful)</p>
+          </button>
+
+          <button data-speak="Ü" class="group rounded-xl bg-white/5 p-4 text-left ring-1 ring-white/10 transition hover:bg-white/10">
+            <div class="flex items-center justify-between">
+              <span class="text-3xl font-black">Ü ü</span>
+              <span class="text-lg opacity-60 group-hover:opacity-100">🔊</span>
+            </div>
+            <p class="mt-2 text-sm text-white/70">Say “ee” with rounded lips</p>
+            <p class="mt-1 text-xs text-amber-300">über (over)</p>
+          </button>
+
+          <button data-speak="ß" class="group rounded-xl bg-white/5 p-4 text-left ring-1 ring-white/10 transition hover:bg-white/10">
+            <div class="flex items-center justify-between">
+              <span class="text-3xl font-black">ß</span>
+              <span class="text-lg opacity-60 group-hover:opacity-100">🔊</span>
+            </div>
+            <p class="mt-2 text-sm text-white/70">Sounds like “ss”</p>
+            <p class="mt-1 text-xs text-amber-300">Straße (street)</p>
+          </button>
         </div>
       </div>
-
-      <button id="generateBtn"
-        class="mt-4 w-full rounded-xl bg-amber-400 py-3 text-lg font-bold text-slate-900
-               transition hover:bg-amber-300 active:scale-95">
-        🎲 Generate Letters
-      </button>
-
-      <div id="letterResults" class="mt-6 min-h-[120px]"></div>
-
-      <p class="mt-4 text-center text-xs text-white/40">Tip: press the space bar to regenerate</p>
     </section>
 
     <!-- =========================================================
-         SECTION 2 — THE ALPHABET
+         VIEW: WORDS
          ========================================================= -->
-    <section id="alphabet" data-nav class="scroll-mt-20 rounded-3xl border border-white/20 bg-white/10 p-6 shadow-xl backdrop-blur">
-      <div class="flex flex-wrap items-center justify-between gap-2">
-        <h2 class="text-xl font-bold">📖 The Alphabet</h2>
-        <span class="text-xs text-white/40">Tap any letter to hear it</span>
+    <section id="words" data-view class="hidden space-y-6">
+
+      <header class="fade-up">
+        <h1 class="text-3xl font-black tracking-tight">💬 Top 100 German Words</h1>
+        <p class="mt-1 text-sm text-white/60">Practice randomly or browse the full list with English &amp; Arabic meanings.</p>
+      </header>
+
+      <!-- Random word practice -->
+      <div class="rounded-3xl border border-white/20 bg-white/10 p-6 shadow-2xl backdrop-blur sm:p-8">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <h2 class="text-lg font-bold text-white/80">🎲 Random Word Practice</h2>
+          <span class="text-xs text-white/40">Tap a card to reveal &amp; hear</span>
+        </div>
+
+        <div class="mt-5">
+          <label class="text-xs uppercase tracking-wider text-white/50">How many words?</label>
+          <div class="mt-2 flex flex-wrap gap-2">
+            <button data-wcount="1" class="wcount-btn rounded-lg bg-amber-400 px-4 py-2 text-sm font-bold text-slate-900 transition hover:bg-amber-300">1</button>
+            <button data-wcount="3" class="wcount-btn rounded-lg bg-white/10 px-4 py-2 text-sm font-semibold transition hover:bg-white/20">3</button>
+            <button data-wcount="5" class="wcount-btn rounded-lg bg-white/10 px-4 py-2 text-sm font-semibold transition hover:bg-white/20">5</button>
+          </div>
+        </div>
+
+        <button id="wordGenerateBtn"
+          class="mt-4 w-full rounded-xl bg-amber-400 py-3 text-lg font-bold text-slate-900
+                 transition hover:bg-amber-300 active:scale-95">
+          🎲 Generate Words
+        </button>
+
+        <div id="wordResults" class="mt-6 min-h-[120px]"></div>
       </div>
 
-      <div id="alphabetGrid" class="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-6"></div>
+      <!-- Full word list -->
+      <div class="rounded-3xl border border-white/20 bg-white/10 p-6 shadow-xl backdrop-blur">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <h2 class="text-xl font-bold">📚 All 100 Words</h2>
+          <span class="text-xs text-white/40">Tap any word to hear it</span>
+        </div>
 
-      <h3 class="mb-3 mt-8 text-lg font-bold text-amber-300">Four Special Characters</h3>
+        <input id="wordSearch" type="text" placeholder="🔍 Search German, English or Arabic…"
+          class="mt-4 w-full rounded-xl bg-white/5 px-4 py-2.5 text-sm text-white ring-1 ring-white/10
+                 outline-none transition placeholder:text-white/30 focus:ring-amber-300/50" />
 
-      <div class="grid gap-3 sm:grid-cols-2">
-        <button data-speak="Ä" class="group rounded-xl bg-white/5 p-4 text-left ring-1 ring-white/10 transition hover:bg-white/10">
-          <div class="flex items-center justify-between">
-            <span class="text-3xl font-black">Ä ä</span>
-            <span class="text-lg opacity-60 group-hover:opacity-100">🔊</span>
-          </div>
-          <p class="mt-2 text-sm text-white/70">Similar to the vowel in “bed”</p>
-          <p class="mt-1 text-xs text-amber-300">Mädchen (girl)</p>
-        </button>
-
-        <button data-speak="Ö" class="group rounded-xl bg-white/5 p-4 text-left ring-1 ring-white/10 transition hover:bg-white/10">
-          <div class="flex items-center justify-between">
-            <span class="text-3xl font-black">Ö ö</span>
-            <span class="text-lg opacity-60 group-hover:opacity-100">🔊</span>
-          </div>
-          <p class="mt-2 text-sm text-white/70">Say “eh” with rounded lips</p>
-          <p class="mt-1 text-xs text-amber-300">schön (beautiful)</p>
-        </button>
-
-        <button data-speak="Ü" class="group rounded-xl bg-white/5 p-4 text-left ring-1 ring-white/10 transition hover:bg-white/10">
-          <div class="flex items-center justify-between">
-            <span class="text-3xl font-black">Ü ü</span>
-            <span class="text-lg opacity-60 group-hover:opacity-100">🔊</span>
-          </div>
-          <p class="mt-2 text-sm text-white/70">Say “ee” with rounded lips</p>
-          <p class="mt-1 text-xs text-amber-300">über (over)</p>
-        </button>
-
-        <button data-speak="ß" class="group rounded-xl bg-white/5 p-4 text-left ring-1 ring-white/10 transition hover:bg-white/10">
-          <div class="flex items-center justify-between">
-            <span class="text-3xl font-black">ß</span>
-            <span class="text-lg opacity-60 group-hover:opacity-100">🔊</span>
-          </div>
-          <p class="mt-2 text-sm text-white/70">Sounds like “ss”</p>
-          <p class="mt-1 text-xs text-amber-300">Straße (street)</p>
-        </button>
+        <div id="wordList" class="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3"></div>
       </div>
     </section>
 
     <!-- =========================================================
-         SECTION 3 — TOP 100 WORDS
+         VIEW: RULES
          ========================================================= -->
-    <section id="words" data-nav class="scroll-mt-20 rounded-3xl border border-white/20 bg-white/10 p-6 shadow-xl backdrop-blur">
+    <section id="rules" data-view class="hidden space-y-6">
 
-      <div class="flex flex-wrap items-center justify-between gap-2">
-        <h2 class="text-xl font-bold">💬 Top 100 German Words</h2>
-        <span class="text-xs text-white/40">English + Arabic meaning</span>
-      </div>
+      <header class="fade-up">
+        <h1 class="text-3xl font-black tracking-tight">📏 Pronunciation Rules</h1>
+        <p class="mt-1 text-sm text-white/60">Eight essential patterns to make German sound natural.</p>
+      </header>
 
-      <!-- --- Random word practice --- -->
-      <h3 class="mb-3 mt-6 text-lg font-bold text-amber-300">🎲 Random Word Practice</h3>
-
-      <div class="flex flex-wrap gap-2">
-        <button data-wcount="1" class="wcount-btn rounded-lg bg-amber-400 px-4 py-2 text-sm font-bold text-slate-900 transition hover:bg-amber-300">1</button>
-        <button data-wcount="3" class="wcount-btn rounded-lg bg-white/10 px-4 py-2 text-sm font-semibold transition hover:bg-white/20">3</button>
-        <button data-wcount="5" class="wcount-btn rounded-lg bg-white/10 px-4 py-2 text-sm font-semibold transition hover:bg-white/20">5</button>
-      </div>
-
-      <button id="wordGenerateBtn"
-        class="mt-3 w-full rounded-xl bg-amber-400 py-3 text-lg font-bold text-slate-900
-               transition hover:bg-amber-300 active:scale-95">
-        🎲 Generate Words
-      </button>
-
-      <div id="wordResults" class="mt-6 min-h-[120px]"></div>
-
-      <!-- --- Full list --- -->
-      <h3 class="mb-3 mt-10 text-lg font-bold text-amber-300">📚 All 100 Words</h3>
-
-      <input id="wordSearch" type="text" placeholder="🔍 Search German, English or Arabic…"
-        class="mb-4 w-full rounded-xl bg-white/5 px-4 py-2.5 text-sm text-white ring-1 ring-white/10
-               outline-none transition placeholder:text-white/30 focus:ring-amber-300/50" />
-
-      <div id="wordList" class="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3"></div>
-
-      <p class="mt-4 text-center text-xs text-white/40">Tap any word to hear it spoken in German</p>
-    </section>
-
-    <!-- =========================================================
-         SECTION 4 — PRONUNCIATION RULES
-         ========================================================= -->
-    <section id="rules" data-nav class="scroll-mt-20 rounded-3xl border border-white/20 bg-white/10 p-6 shadow-xl backdrop-blur">
-      <h2 class="mb-4 text-xl font-bold">📏 Pronunciation Rules to Remember</h2>
-
-      <div class="overflow-x-auto rounded-xl ring-1 ring-white/10">
+      <div class="overflow-x-auto rounded-3xl border border-white/20 bg-white/10 p-2 shadow-xl backdrop-blur">
         <table class="w-full text-left text-sm">
-          <thead class="bg-white/10 text-white/70">
+          <thead class="text-white/70">
             <tr>
-              <th class="px-4 py-2 font-semibold">German</th>
-              <th class="px-4 py-2 font-semibold">Simple rule</th>
-              <th class="px-4 py-2 font-semibold">Example</th>
+              <th class="px-4 py-3 font-semibold">German</th>
+              <th class="px-4 py-3 font-semibold">Simple rule</th>
+              <th class="px-4 py-3 font-semibold">Example</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-white/10">
@@ -275,37 +320,41 @@
     </section>
 
     <!-- =========================================================
-         SECTION 5 — MINI PRACTICE
+         VIEW: PRACTICE
          ========================================================= -->
-    <section id="practice" data-nav class="scroll-mt-20 rounded-3xl border border-white/20 bg-white/10 p-6 shadow-xl backdrop-blur">
-      <h2 class="mb-1 text-xl font-bold">🗣️ Mini-Practice</h2>
-      <p class="mb-4 text-sm text-white/60">Read these words aloud, then tap 🔊 to check yourself.</p>
+    <section id="practice" data-view class="hidden space-y-6">
+
+      <header class="fade-up">
+        <h1 class="text-3xl font-black tracking-tight">🗣️ Mini Practice</h1>
+        <p class="mt-1 text-sm text-white/60">Read each word aloud, then tap to check yourself.</p>
+      </header>
 
       <div class="grid gap-3 sm:grid-cols-2">
-        <button data-speak="Ja" class="group flex items-center justify-between rounded-xl bg-white/5 px-4 py-3 text-left ring-1 ring-white/10 transition hover:bg-white/10">
+        <button data-speak="Ja" class="group flex items-center justify-between rounded-2xl border border-white/20 bg-white/5 px-4 py-4 text-left transition hover:bg-white/10">
           <span><span class="font-bold text-amber-300">Ja</span> <span class="text-white/60">— yes</span></span>
           <span class="text-lg opacity-60 group-hover:opacity-100">🔊</span>
         </button>
-        <button data-speak="Nein" class="group flex items-center justify-between rounded-xl bg-white/5 px-4 py-3 text-left ring-1 ring-white/10 transition hover:bg-white/10">
+        <button data-speak="Nein" class="group flex items-center justify-between rounded-2xl border border-white/20 bg-white/5 px-4 py-4 text-left transition hover:bg-white/10">
           <span><span class="font-bold text-amber-300">Nein</span> <span class="text-white/60">— no</span></span>
           <span class="text-lg opacity-60 group-hover:opacity-100">🔊</span>
         </button>
-        <button data-speak="Wasser" class="group flex items-center justify-between rounded-xl bg-white/5 px-4 py-3 text-left ring-1 ring-white/10 transition hover:bg-white/10">
+        <button data-speak="Wasser" class="group flex items-center justify-between rounded-2xl border border-white/20 bg-white/5 px-4 py-4 text-left transition hover:bg-white/10">
           <span><span class="font-bold text-amber-300">Wasser</span> <span class="text-white/60">— water</span></span>
           <span class="text-lg opacity-60 group-hover:opacity-100">🔊</span>
         </button>
-        <button data-speak="Zeit" class="group flex items-center justify-between rounded-xl bg-white/5 px-4 py-3 text-left ring-1 ring-white/10 transition hover:bg-white/10">
+        <button data-speak="Zeit" class="group flex items-center justify-between rounded-2xl border border-white/20 bg-white/5 px-4 py-4 text-left transition hover:bg-white/10">
           <span><span class="font-bold text-amber-300">Zeit</span> <span class="text-white/60">— time</span></span>
           <span class="text-lg opacity-60 group-hover:opacity-100">🔊</span>
         </button>
-        <button data-speak="Schule" class="group flex items-center justify-between rounded-xl bg-white/5 px-4 py-3 text-left ring-1 ring-white/10 transition hover:bg-white/10 sm:col-span-2">
+        <button data-speak="Schule" class="group flex items-center justify-between rounded-2xl border border-white/20 bg-white/5 px-4 py-4 text-left transition hover:bg-white/10 sm:col-span-2">
           <span><span class="font-bold text-amber-300">Schule</span> <span class="text-white/60">— school</span></span>
           <span class="text-lg opacity-60 group-hover:opacity-100">🔊</span>
         </button>
       </div>
+
+      <p class="pt-2 text-center text-xs text-white/30">Viel Erfolg beim Lernen! 🇩🇪</p>
     </section>
 
-    <p class="pb-4 pt-2 text-center text-xs text-white/30">Viel Erfolg beim Lernen! 🇩🇪</p>
   </main>
 
 <script>
@@ -313,138 +362,125 @@
      DATA — ALPHABET
      ========================================================= */
   const ALPHABET = [
-    { letter: "A", name: "ah" },
-    { letter: "B", name: "bay" },
-    { letter: "C", name: "tsay" },
-    { letter: "D", name: "day" },
-    { letter: "E", name: "ay" },
-    { letter: "F", name: "eff" },
-    { letter: "G", name: "gay" },
-    { letter: "H", name: "hah" },
-    { letter: "I", name: "ee" },
-    { letter: "J", name: "yot" },
-    { letter: "K", name: "kah" },
-    { letter: "L", name: "ell" },
-    { letter: "M", name: "em" },
-    { letter: "N", name: "en" },
-    { letter: "O", name: "oh" },
-    { letter: "P", name: "pay" },
-    { letter: "Q", name: "koo" },
-    { letter: "R", name: "err" },
-    { letter: "S", name: "ess" },
-    { letter: "T", name: "tay" },
-    { letter: "U", name: "oo" },
-    { letter: "V", name: "fow" },
-    { letter: "W", name: "vay" },
-    { letter: "X", name: "iks" },
-    { letter: "Y", name: "üpsilon" },
-    { letter: "Z", name: "tset" }
+    { letter: "A", name: "ah" }, { letter: "B", name: "bay" },
+    { letter: "C", name: "tsay" }, { letter: "D", name: "day" },
+    { letter: "E", name: "ay" }, { letter: "F", name: "eff" },
+    { letter: "G", name: "gay" }, { letter: "H", name: "hah" },
+    { letter: "I", name: "ee" }, { letter: "J", name: "yot" },
+    { letter: "K", name: "kah" }, { letter: "L", name: "ell" },
+    { letter: "M", name: "em" }, { letter: "N", name: "en" },
+    { letter: "O", name: "oh" }, { letter: "P", name: "pay" },
+    { letter: "Q", name: "koo" }, { letter: "R", name: "err" },
+    { letter: "S", name: "ess" }, { letter: "T", name: "tay" },
+    { letter: "U", name: "oo" }, { letter: "V", name: "fow" },
+    { letter: "W", name: "vay" }, { letter: "X", name: "iks" },
+    { letter: "Y", name: "üpsilon" }, { letter: "Z", name: "tset" }
   ];
 
   /* =========================================================
-     DATA — TOP 100 GERMAN WORDS (de / en / ar)
+     DATA — TOP 100 WORDS
      ========================================================= */
   const WORDS = [
-    { de: "der",        en: "the (masculine)",   ar: "الـ (مذكر)" },
-    { de: "die",        en: "the (feminine)",    ar: "الـ (مؤنث)" },
-    { de: "das",        en: "the (neuter)",      ar: "الـ (محايد)" },
-    { de: "und",        en: "and",               ar: "و" },
-    { de: "sein",       en: "to be",             ar: "يكون" },
-    { de: "in",         en: "in",                ar: "في" },
-    { de: "ein",        en: "a (masc./neut.)",   ar: "أداة تنكير (مذكر)" },
-    { de: "eine",       en: "a (feminine)",      ar: "أداة تنكير (مؤنث)" },
-    { de: "zu",         en: "to",                ar: "إلى" },
-    { de: "haben",      en: "to have",           ar: "يملك" },
-    { de: "ich",        en: "I",                 ar: "أنا" },
-    { de: "werden",     en: "to become",         ar: "يصبح" },
-    { de: "nicht",      en: "not",               ar: "لا / ليس" },
-    { de: "mit",        en: "with",              ar: "مع" },
-    { de: "es",         en: "it",                ar: "هو (لغير العاقل)" },
-    { de: "sich",       en: "oneself",           ar: "نفسه" },
-    { de: "auf",        en: "on",                ar: "على" },
-    { de: "für",        en: "for",               ar: "من أجل" },
-    { de: "von",        en: "from / of",         ar: "من" },
-    { de: "so",         en: "so",                ar: "هكذا" },
-    { de: "dass",       en: "that",              ar: "أنّ" },
-    { de: "können",     en: "can / to be able",  ar: "يستطيع" },
-    { de: "dieser",     en: "this",              ar: "هذا" },
-    { de: "auch",       en: "also",              ar: "أيضاً" },
-    { de: "als",        en: "as / than",         ar: "مثل / من (مقارنة)" },
-    { de: "bei",        en: "at / near",         ar: "عند" },
-    { de: "um",         en: "around / at",       ar: "حول / عند (الساعة)" },
-    { de: "nach",       en: "after / to",        ar: "بعد / نحو" },
-    { de: "aus",        en: "out of / from",     ar: "من (الداخل)" },
-    { de: "du",         en: "you (informal)",    ar: "أنت" },
-    { de: "wir",        en: "we",                ar: "نحن" },
-    { de: "sie",        en: "she / they",        ar: "هي / هم" },
-    { de: "er",         en: "he",                ar: "هو" },
-    { de: "was",        en: "what",              ar: "ماذا" },
-    { de: "wie",        en: "how",               ar: "كيف" },
-    { de: "aber",       en: "but",               ar: "لكن" },
-    { de: "oder",       en: "or",                ar: "أو" },
-    { de: "wenn",       en: "if / when",         ar: "إذا / عندما" },
-    { de: "noch",       en: "still / yet",       ar: "لا يزال" },
-    { de: "nur",        en: "only",              ar: "فقط" },
-    { de: "schon",      en: "already",           ar: "بالفعل" },
-    { de: "ja",         en: "yes",               ar: "نعم" },
-    { de: "nein",       en: "no",                ar: "لا" },
-    { de: "mehr",       en: "more",              ar: "أكثر" },
-    { de: "sehr",       en: "very",              ar: "جداً" },
-    { de: "hier",       en: "here",              ar: "هنا" },
-    { de: "dort",       en: "there",             ar: "هناك" },
-    { de: "jetzt",      en: "now",               ar: "الآن" },
-    { de: "immer",      en: "always",            ar: "دائماً" },
-    { de: "nie",        en: "never",             ar: "أبداً" },
-    { de: "heute",      en: "today",             ar: "اليوم" },
-    { de: "morgen",     en: "tomorrow",          ar: "غداً" },
-    { de: "gestern",    en: "yesterday",         ar: "أمس" },
-    { de: "gut",        en: "good",              ar: "جيد" },
-    { de: "schlecht",   en: "bad",               ar: "سيئ" },
-    { de: "groß",       en: "big / tall",        ar: "كبير" },
-    { de: "klein",      en: "small",             ar: "صغير" },
-    { de: "neu",        en: "new",               ar: "جديد" },
-    { de: "alt",        en: "old",               ar: "قديم" },
-    { de: "viel",       en: "much / a lot",      ar: "كثير" },
-    { de: "wenig",      en: "little / few",      ar: "قليل" },
-    { de: "machen",     en: "to do / to make",   ar: "يفعل / يصنع" },
-    { de: "gehen",      en: "to go",             ar: "يذهب" },
-    { de: "kommen",     en: "to come",           ar: "يأتي" },
-    { de: "sehen",      en: "to see",            ar: "يرى" },
-    { de: "sagen",      en: "to say",            ar: "يقول" },
-    { de: "sprechen",   en: "to speak",          ar: "يتكلم" },
-    { de: "hören",      en: "to hear",           ar: "يسمع" },
-    { de: "lesen",      en: "to read",           ar: "يقرأ" },
-    { de: "schreiben",  en: "to write",          ar: "يكتب" },
-    { de: "essen",      en: "to eat",            ar: "يأكل" },
-    { de: "trinken",    en: "to drink",          ar: "يشرب" },
-    { de: "arbeiten",   en: "to work",           ar: "يعمل" },
-    { de: "lernen",     en: "to learn",          ar: "يتعلم" },
-    { de: "verstehen",  en: "to understand",     ar: "يفهم" },
-    { de: "wissen",     en: "to know",           ar: "يعرف" },
-    { de: "denken",     en: "to think",          ar: "يفكر" },
-    { de: "kaufen",     en: "to buy",            ar: "يشتري" },
-    { de: "geben",      en: "to give",           ar: "يعطي" },
-    { de: "nehmen",     en: "to take",           ar: "يأخذ" },
-    { de: "finden",     en: "to find",           ar: "يجد" },
-    { de: "brauchen",   en: "to need",           ar: "يحتاج" },
-    { de: "wohnen",     en: "to live / reside",  ar: "يسكن" },
-    { de: "das Haus",   en: "house",             ar: "منزل" },
-    { de: "die Schule", en: "school",            ar: "مدرسة" },
-    { de: "die Straße", en: "street",            ar: "شارع" },
-    { de: "das Wasser", en: "water",             ar: "ماء" },
-    { de: "das Brot",   en: "bread",             ar: "خبز" },
-    { de: "der Tag",    en: "day",               ar: "يوم" },
-    { de: "die Zeit",   en: "time",              ar: "وقت" },
-    { de: "das Jahr",   en: "year",              ar: "سنة" },
-    { de: "der Freund", en: "friend",            ar: "صديق" },
-    { de: "die Familie",en: "family",            ar: "عائلة" },
-    { de: "das Kind",   en: "child",             ar: "طفل" },
-    { de: "die Frau",   en: "woman",             ar: "امرأة" },
-    { de: "der Mann",   en: "man",               ar: "رجل" },
-    { de: "das Geld",   en: "money",             ar: "مال" },
-    { de: "die Arbeit", en: "work / job",        ar: "عمل" },
-    { de: "das Buch",   en: "book",              ar: "كتاب" },
-    { de: "das Leben",  en: "life",              ar: "حياة" }
+    { de: "der", en: "the (masculine)", ar: "الـ (مذكر)" },
+    { de: "die", en: "the (feminine)", ar: "الـ (مؤنث)" },
+    { de: "das", en: "the (neuter)", ar: "الـ (محايد)" },
+    { de: "und", en: "and", ar: "و" },
+    { de: "sein", en: "to be", ar: "يكون" },
+    { de: "in", en: "in", ar: "في" },
+    { de: "ein", en: "a (masc./neut.)", ar: "أداة تنكير (مذكر)" },
+    { de: "eine", en: "a (feminine)", ar: "أداة تنكير (مؤنث)" },
+    { de: "zu", en: "to", ar: "إلى" },
+    { de: "haben", en: "to have", ar: "يملك" },
+    { de: "ich", en: "I", ar: "أنا" },
+    { de: "werden", en: "to become", ar: "يصبح" },
+    { de: "nicht", en: "not", ar: "لا / ليس" },
+    { de: "mit", en: "with", ar: "مع" },
+    { de: "es", en: "it", ar: "هو (لغير العاقل)" },
+    { de: "sich", en: "oneself", ar: "نفسه" },
+    { de: "auf", en: "on", ar: "على" },
+    { de: "für", en: "for", ar: "من أجل" },
+    { de: "von", en: "from / of", ar: "من" },
+    { de: "so", en: "so", ar: "هكذا" },
+    { de: "dass", en: "that", ar: "أنّ" },
+    { de: "können", en: "can / to be able", ar: "يستطيع" },
+    { de: "dieser", en: "this", ar: "هذا" },
+    { de: "auch", en: "also", ar: "أيضاً" },
+    { de: "als", en: "as / than", ar: "مثل / من (مقارنة)" },
+    { de: "bei", en: "at / near", ar: "عند" },
+    { de: "um", en: "around / at", ar: "حول / عند (الساعة)" },
+    { de: "nach", en: "after / to", ar: "بعد / نحو" },
+    { de: "aus", en: "out of / from", ar: "من (الداخل)" },
+    { de: "du", en: "you (informal)", ar: "أنت" },
+    { de: "wir", en: "we", ar: "نحن" },
+    { de: "sie", en: "she / they", ar: "هي / هم" },
+    { de: "er", en: "he", ar: "هو" },
+    { de: "was", en: "what", ar: "ماذا" },
+    { de: "wie", en: "how", ar: "كيف" },
+    { de: "aber", en: "but", ar: "لكن" },
+    { de: "oder", en: "or", ar: "أو" },
+    { de: "wenn", en: "if / when", ar: "إذا / عندما" },
+    { de: "noch", en: "still / yet", ar: "لا يزال" },
+    { de: "nur", en: "only", ar: "فقط" },
+    { de: "schon", en: "already", ar: "بالفعل" },
+    { de: "ja", en: "yes", ar: "نعم" },
+    { de: "nein", en: "no", ar: "لا" },
+    { de: "mehr", en: "more", ar: "أكثر" },
+    { de: "sehr", en: "very", ar: "جداً" },
+    { de: "hier", en: "here", ar: "هنا" },
+    { de: "dort", en: "there", ar: "هناك" },
+    { de: "jetzt", en: "now", ar: "الآن" },
+    { de: "immer", en: "always", ar: "دائماً" },
+    { de: "nie", en: "never", ar: "أبداً" },
+    { de: "heute", en: "today", ar: "اليوم" },
+    { de: "morgen", en: "tomorrow", ar: "غداً" },
+    { de: "gestern", en: "yesterday", ar: "أمس" },
+    { de: "gut", en: "good", ar: "جيد" },
+    { de: "schlecht", en: "bad", ar: "سيئ" },
+    { de: "groß", en: "big / tall", ar: "كبير" },
+    { de: "klein", en: "small", ar: "صغير" },
+    { de: "neu", en: "new", ar: "جديد" },
+    { de: "alt", en: "old", ar: "قديم" },
+    { de: "viel", en: "much / a lot", ar: "كثير" },
+    { de: "wenig", en: "little / few", ar: "قليل" },
+    { de: "machen", en: "to do / to make", ar: "يفعل / يصنع" },
+    { de: "gehen", en: "to go", ar: "يذهب" },
+    { de: "kommen", en: "to come", ar: "يأتي" },
+    { de: "sehen", en: "to see", ar: "يرى" },
+    { de: "sagen", en: "to say", ar: "يقول" },
+    { de: "sprechen", en: "to speak", ar: "يتكلم" },
+    { de: "hören", en: "to hear", ar: "يسمع" },
+    { de: "lesen", en: "to read", ar: "يقرأ" },
+    { de: "schreiben", en: "to write", ar: "يكتب" },
+    { de: "essen", en: "to eat", ar: "يأكل" },
+    { de: "trinken", en: "to drink", ar: "يشرب" },
+    { de: "arbeiten", en: "to work", ar: "يعمل" },
+    { de: "lernen", en: "to learn", ar: "يتعلم" },
+    { de: "verstehen", en: "to understand", ar: "يفهم" },
+    { de: "wissen", en: "to know", ar: "يعرف" },
+    { de: "denken", en: "to think", ar: "يفكر" },
+    { de: "kaufen", en: "to buy", ar: "يشتري" },
+    { de: "geben", en: "to give", ar: "يعطي" },
+    { de: "nehmen", en: "to take", ar: "يأخذ" },
+    { de: "finden", en: "to find", ar: "يجد" },
+    { de: "brauchen", en: "to need", ar: "يحتاج" },
+    { de: "wohnen", en: "to live / reside", ar: "يسكن" },
+    { de: "das Haus", en: "house", ar: "منزل" },
+    { de: "die Schule", en: "school", ar: "مدرسة" },
+    { de: "die Straße", en: "street", ar: "شارع" },
+    { de: "das Wasser", en: "water", ar: "ماء" },
+    { de: "das Brot", en: "bread", ar: "خبز" },
+    { de: "der Tag", en: "day", ar: "يوم" },
+    { de: "die Zeit", en: "time", ar: "وقت" },
+    { de: "das Jahr", en: "year", ar: "سنة" },
+    { de: "der Freund", en: "friend", ar: "صديق" },
+    { de: "die Familie", en: "family", ar: "عائلة" },
+    { de: "das Kind", en: "child", ar: "طفل" },
+    { de: "die Frau", en: "woman", ar: "امرأة" },
+    { de: "der Mann", en: "man", ar: "رجل" },
+    { de: "das Geld", en: "money", ar: "مال" },
+    { de: "die Arbeit", en: "work / job", ar: "عمل" },
+    { de: "das Buch", en: "book", ar: "كتاب" },
+    { de: "das Leben", en: "life", ar: "حياة" }
   ];
 
   /* =========================================================
@@ -490,7 +526,7 @@
 
     const utter = new SpeechSynthesisUtterance(text);
     utter.lang  = "de-DE";
-    utter.rate  = 0.8;   // slower = easier to imitate
+    utter.rate  = 0.8;
     utter.pitch = 1;
     if (germanVoice) utter.voice = germanVoice;
 
@@ -498,7 +534,34 @@
   }
 
   /* =========================================================
-     MOBILE NAVIGATION
+     ROUTER — show one view at a time
+     ========================================================= */
+  const VALID_VIEWS = ["home", "alphabet", "words", "rules", "practice"];
+
+  function route() {
+    let id = (window.location.hash || "#home").slice(1);
+    if (!VALID_VIEWS.includes(id)) id = "home";
+
+    document.querySelectorAll("section[data-view]").forEach(sec => {
+      sec.classList.toggle("hidden", sec.id !== id);
+    });
+
+    document.querySelectorAll("a[data-nav]").forEach(a => {
+      a.classList.toggle("active", a.getAttribute("href") === "#" + id);
+    });
+
+    // close mobile menu
+    mobileMenu.classList.add("hidden");
+    menuBtn.textContent = "☰";
+    menuBtn.setAttribute("aria-expanded", "false");
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  window.addEventListener("hashchange", route);
+
+  /* =========================================================
+     MOBILE NAV
      ========================================================= */
   menuBtn.addEventListener("click", () => {
     const isHidden = mobileMenu.classList.toggle("hidden");
@@ -506,36 +569,8 @@
     menuBtn.textContent = isHidden ? "☰" : "✕";
   });
 
-  // close mobile menu after choosing a section
-  mobileMenu.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      mobileMenu.classList.add("hidden");
-      menuBtn.textContent = "☰";
-      menuBtn.setAttribute("aria-expanded", "false");
-    });
-  });
-
   /* =========================================================
-     SCROLL-SPY (highlight active nav link)
-     ========================================================= */
-  const navLinks = document.querySelectorAll("[data-nav-link]");
-
-  if ("IntersectionObserver" in window) {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          navLinks.forEach(link =>
-            link.classList.toggle("active", link.dataset.navLink === entry.target.id)
-          );
-        }
-      });
-    }, { rootMargin: "-45% 0px -50% 0px" });
-
-    document.querySelectorAll("section[data-nav]").forEach(s => observer.observe(s));
-  }
-
-  /* =========================================================
-     SECTION 1 — RANDOM LETTERS
+     HELPERS
      ========================================================= */
   function pickRandomItems(arr, n) {
     const pool = [...arr];
@@ -546,6 +581,18 @@
     return pool.slice(0, Math.min(n, pool.length));
   }
 
+  function setActiveCount(btn, group) {
+    group.forEach(b => {
+      b.classList.remove("bg-amber-400", "text-slate-900", "font-bold");
+      b.classList.add("bg-white/10", "font-semibold", "text-white");
+    });
+    btn.classList.remove("bg-white/10", "font-semibold", "text-white");
+    btn.classList.add("bg-amber-400", "text-slate-900", "font-bold");
+  }
+
+  /* =========================================================
+     ALPHABET — RANDOM LETTERS
+     ========================================================= */
   function makeLetterCard({ letter, name }, isLarge) {
     const btn = document.createElement("button");
     btn.className = isLarge
@@ -588,18 +635,7 @@
     }
   }
 
-  // count buttons
   const countBtns = document.querySelectorAll(".count-btn");
-
-  function setActiveCount(btn, group) {
-    group.forEach(b => {
-      b.classList.remove("bg-amber-400", "text-slate-900", "font-bold");
-      b.classList.add("bg-white/10", "font-semibold", "text-white");
-    });
-    btn.classList.remove("bg-white/10", "font-semibold", "text-white");
-    btn.classList.add("bg-amber-400", "text-slate-900", "font-bold");
-  }
-
   countBtns.forEach(btn => {
     btn.addEventListener("click", () => {
       selectedLetterCount = parseInt(btn.dataset.count, 10);
@@ -607,11 +643,10 @@
       renderLetters();
     });
   });
-
   generateBtn.addEventListener("click", renderLetters);
 
   /* =========================================================
-     SECTION 3 — TOP 100 WORDS (random practice)
+     WORDS — RANDOM PRACTICE
      ========================================================= */
   function makeWordCard(word, isLarge) {
     const btn = document.createElement("button");
@@ -661,7 +696,6 @@
   }
 
   const wcountBtns = document.querySelectorAll(".wcount-btn");
-
   wcountBtns.forEach(btn => {
     btn.addEventListener("click", () => {
       selectedWordCount = parseInt(btn.dataset.wcount, 10);
@@ -669,11 +703,10 @@
       renderWords();
     });
   });
-
   wordGenerateBtn.addEventListener("click", renderWords);
 
   /* =========================================================
-     SECTION 3 — FULL WORD LIST + SEARCH
+     WORDS — FULL LIST + SEARCH
      ========================================================= */
   function renderWordList(filter = "") {
     const q = filter.trim().toLowerCase();
@@ -734,17 +767,21 @@
   });
 
   /* =========================================================
-     SPEAK BUTTONS (special characters + mini practice)
+     SPEAK BUTTONS (special chars + mini practice)
      ========================================================= */
   document.querySelectorAll("[data-speak]").forEach(btn => {
     btn.addEventListener("click", () => speak(btn.dataset.speak));
   });
 
   /* =========================================================
-     SPACE BAR → regenerate letters
+     SPACE BAR → regenerate letters (only when alphabet view is active)
      ========================================================= */
   document.addEventListener("keydown", e => {
-    if (e.code === "Space" && document.activeElement !== wordSearchEl) {
+    if (e.code !== "Space") return;
+    if (document.activeElement === wordSearchEl) return;
+
+    const alphabetVisible = !document.getElementById("alphabet").classList.contains("hidden");
+    if (alphabetVisible) {
       e.preventDefault();
       renderLetters();
     }
@@ -758,6 +795,7 @@
   renderLetters();
   renderWords();
   renderWordList();
+  route();          // show correct view based on URL hash
 </script>
 </body>
 </html>
