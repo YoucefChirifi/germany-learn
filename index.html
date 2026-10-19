@@ -3,12 +3,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>German Alphabet – Learn & Practice</title>
+<title>German Alphabet & Top 100 Words</title>
 
 <!-- Tailwind CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
+  html { scroll-behavior: smooth; }
+
   @keyframes pop {
     0%   { transform: scale(0.6); opacity: 0; }
     60%  { transform: scale(1.08); opacity: 1; }
@@ -28,28 +30,73 @@
     100% { opacity: 1; transform: translateY(0); }
   }
   .fade-up { animation: fadeUp .25s ease-out; }
+
+  /* active nav link */
+  .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.12);
+    color: #fbbf24;
+  }
 </style>
 </head>
 
 <body class="min-h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900
-             p-4 text-white">
+             text-white">
 
-  <div class="mx-auto max-w-4xl space-y-6 py-6">
+  <!-- =========================================================
+       NAVIGATION (sticky, responsive)
+       ========================================================= -->
+  <nav class="sticky top-0 z-50 border-b border-white/10 bg-slate-900/80 backdrop-blur-md">
+    <div class="mx-auto flex max-w-4xl items-center justify-between gap-2 px-4 py-3">
 
-    <!-- ================= HEADER ================= -->
+      <a href="#top" class="text-lg font-black tracking-tight">🇩🇪 Deutsch</a>
+
+      <!-- Desktop links -->
+      <ul class="hidden items-center gap-1 text-sm md:flex">
+        <li><a href="#random-letters" data-nav-link="random-letters" class="nav-link rounded-lg px-3 py-2 text-white/70 transition hover:bg-white/10 hover:text-white">🎲 Letters</a></li>
+        <li><a href="#alphabet"       data-nav-link="alphabet"       class="nav-link rounded-lg px-3 py-2 text-white/70 transition hover:bg-white/10 hover:text-white">📖 Alphabet</a></li>
+        <li><a href="#words"          data-nav-link="words"          class="nav-link rounded-lg px-3 py-2 text-white/70 transition hover:bg-white/10 hover:text-white">💬 Words</a></li>
+        <li><a href="#rules"          data-nav-link="rules"          class="nav-link rounded-lg px-3 py-2 text-white/70 transition hover:bg-white/10 hover:text-white">📏 Rules</a></li>
+        <li><a href="#practice"       data-nav-link="practice"       class="nav-link rounded-lg px-3 py-2 text-white/70 transition hover:bg-white/10 hover:text-white">🗣️ Practice</a></li>
+      </ul>
+
+      <!-- Mobile hamburger -->
+      <button id="menuBtn" aria-label="Open menu" aria-expanded="false"
+        class="rounded-lg bg-white/10 px-3 py-2 text-lg leading-none transition hover:bg-white/20 active:scale-95 md:hidden">
+        ☰
+      </button>
+    </div>
+
+    <!-- Mobile dropdown -->
+    <ul id="mobileMenu" class="hidden space-y-1 border-t border-white/10 px-4 pb-4 pt-2 text-sm md:hidden">
+      <li><a href="#random-letters" class="block rounded-lg px-3 py-2.5 text-white/80 transition hover:bg-white/10">🎲 Random Letters</a></li>
+      <li><a href="#alphabet"       class="block rounded-lg px-3 py-2.5 text-white/80 transition hover:bg-white/10">📖 The Alphabet</a></li>
+      <li><a href="#words"          class="block rounded-lg px-3 py-2.5 text-white/80 transition hover:bg-white/10">💬 Top 100 Words</a></li>
+      <li><a href="#rules"          class="block rounded-lg px-3 py-2.5 text-white/80 transition hover:bg-white/10">📏 Pronunciation Rules</a></li>
+      <li><a href="#practice"       class="block rounded-lg px-3 py-2.5 text-white/80 transition hover:bg-white/10">🗣️ Mini Practice</a></li>
+    </ul>
+  </nav>
+
+  <!-- =========================================================
+       MAIN
+       ========================================================= -->
+  <main id="top" class="mx-auto max-w-4xl space-y-6 px-4 py-6">
+
+    <!-- ===== HEADER ===== -->
     <header class="text-center">
       <h1 class="text-3xl font-black tracking-tight sm:text-4xl">Das deutsche Alphabet</h1>
-      <p class="mt-2 text-sm text-white/60">
-        Learn the letters, hear the pronunciation, practice out loud 🇩🇪
+      <p class="mx-auto mt-2 max-w-md text-sm text-white/60">
+        Learn the letters, master the top 100 words, hear the pronunciation — all in one page 🇩🇪
       </p>
     </header>
 
-    <!-- ================= SECTION 1: RANDOM PRACTICE ================= -->
-    <section class="rounded-3xl border border-white/20 bg-white/10 p-6 shadow-2xl backdrop-blur sm:p-8">
+    <!-- =========================================================
+         SECTION 1 — RANDOM LETTER PRACTICE
+         ========================================================= -->
+    <section id="random-letters" data-nav class="scroll-mt-20 rounded-3xl border border-white/20 bg-white/10 p-6 shadow-2xl backdrop-blur sm:p-8">
 
       <div class="flex flex-wrap items-center justify-between gap-2">
-        <h2 class="text-lg font-bold text-white/80">🎲 Random Practice</h2>
-        <span class="text-xs text-white/40">Tap a letter to reveal &amp; hear it</span>
+        <h2 class="text-lg font-bold text-white/80">🎲 Random Letter Practice</h2>
+        <span class="text-xs text-white/40">Reveal &amp; hear with “Hear it”</span>
       </div>
 
       <!-- Count selector -->
@@ -64,30 +111,29 @@
         </div>
       </div>
 
-      <!-- Generate button -->
       <button id="generateBtn"
         class="mt-4 w-full rounded-xl bg-amber-400 py-3 text-lg font-bold text-slate-900
                transition hover:bg-amber-300 active:scale-95">
-        🎲 Generate
+        🎲 Generate Letters
       </button>
 
-      <!-- Results -->
-      <div id="results" class="mt-6 min-h-[120px]"></div>
+      <div id="letterResults" class="mt-6 min-h-[120px]"></div>
 
       <p class="mt-4 text-center text-xs text-white/40">Tip: press the space bar to regenerate</p>
     </section>
 
-    <!-- ================= SECTION 2: THE ALPHABET ================= -->
-    <section class="rounded-3xl border border-white/20 bg-white/10 p-6 shadow-xl backdrop-blur">
+    <!-- =========================================================
+         SECTION 2 — THE ALPHABET
+         ========================================================= -->
+    <section id="alphabet" data-nav class="scroll-mt-20 rounded-3xl border border-white/20 bg-white/10 p-6 shadow-xl backdrop-blur">
       <div class="flex flex-wrap items-center justify-between gap-2">
         <h2 class="text-xl font-bold">📖 The Alphabet</h2>
         <span class="text-xs text-white/40">Tap any letter to hear it</span>
       </div>
 
-      <div id="alphabetGrid"
-           class="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-6"></div>
+      <div id="alphabetGrid" class="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-6"></div>
 
-      <h3 class="mt-8 mb-3 text-lg font-bold text-amber-300">Four Special Characters</h3>
+      <h3 class="mb-3 mt-8 text-lg font-bold text-amber-300">Four Special Characters</h3>
 
       <div class="grid gap-3 sm:grid-cols-2">
         <button data-speak="Ä" class="group rounded-xl bg-white/5 p-4 text-left ring-1 ring-white/10 transition hover:bg-white/10">
@@ -128,8 +174,49 @@
       </div>
     </section>
 
-    <!-- ================= SECTION 3: PRONUNCIATION RULES ================= -->
-    <section class="rounded-3xl border border-white/20 bg-white/10 p-6 shadow-xl backdrop-blur">
+    <!-- =========================================================
+         SECTION 3 — TOP 100 WORDS
+         ========================================================= -->
+    <section id="words" data-nav class="scroll-mt-20 rounded-3xl border border-white/20 bg-white/10 p-6 shadow-xl backdrop-blur">
+
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <h2 class="text-xl font-bold">💬 Top 100 German Words</h2>
+        <span class="text-xs text-white/40">English + Arabic meaning</span>
+      </div>
+
+      <!-- --- Random word practice --- -->
+      <h3 class="mb-3 mt-6 text-lg font-bold text-amber-300">🎲 Random Word Practice</h3>
+
+      <div class="flex flex-wrap gap-2">
+        <button data-wcount="1" class="wcount-btn rounded-lg bg-amber-400 px-4 py-2 text-sm font-bold text-slate-900 transition hover:bg-amber-300">1</button>
+        <button data-wcount="3" class="wcount-btn rounded-lg bg-white/10 px-4 py-2 text-sm font-semibold transition hover:bg-white/20">3</button>
+        <button data-wcount="5" class="wcount-btn rounded-lg bg-white/10 px-4 py-2 text-sm font-semibold transition hover:bg-white/20">5</button>
+      </div>
+
+      <button id="wordGenerateBtn"
+        class="mt-3 w-full rounded-xl bg-amber-400 py-3 text-lg font-bold text-slate-900
+               transition hover:bg-amber-300 active:scale-95">
+        🎲 Generate Words
+      </button>
+
+      <div id="wordResults" class="mt-6 min-h-[120px]"></div>
+
+      <!-- --- Full list --- -->
+      <h3 class="mb-3 mt-10 text-lg font-bold text-amber-300">📚 All 100 Words</h3>
+
+      <input id="wordSearch" type="text" placeholder="🔍 Search German, English or Arabic…"
+        class="mb-4 w-full rounded-xl bg-white/5 px-4 py-2.5 text-sm text-white ring-1 ring-white/10
+               outline-none transition placeholder:text-white/30 focus:ring-amber-300/50" />
+
+      <div id="wordList" class="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3"></div>
+
+      <p class="mt-4 text-center text-xs text-white/40">Tap any word to hear it spoken in German</p>
+    </section>
+
+    <!-- =========================================================
+         SECTION 4 — PRONUNCIATION RULES
+         ========================================================= -->
+    <section id="rules" data-nav class="scroll-mt-20 rounded-3xl border border-white/20 bg-white/10 p-6 shadow-xl backdrop-blur">
       <h2 class="mb-4 text-xl font-bold">📏 Pronunciation Rules to Remember</h2>
 
       <div class="overflow-x-auto rounded-xl ring-1 ring-white/10">
@@ -187,8 +274,10 @@
       </div>
     </section>
 
-    <!-- ================= SECTION 4: MINI PRACTICE ================= -->
-    <section class="rounded-3xl border border-white/20 bg-white/10 p-6 shadow-xl backdrop-blur">
+    <!-- =========================================================
+         SECTION 5 — MINI PRACTICE
+         ========================================================= -->
+    <section id="practice" data-nav class="scroll-mt-20 rounded-3xl border border-white/20 bg-white/10 p-6 shadow-xl backdrop-blur">
       <h2 class="mb-1 text-xl font-bold">🗣️ Mini-Practice</h2>
       <p class="mb-4 text-sm text-white/60">Read these words aloud, then tap 🔊 to check yourself.</p>
 
@@ -216,12 +305,12 @@
       </div>
     </section>
 
-    <p class="pb-4 text-center text-xs text-white/30">Viel Erfolg beim Lernen! 🇩🇪</p>
-  </div>
+    <p class="pb-4 pt-2 text-center text-xs text-white/30">Viel Erfolg beim Lernen! 🇩🇪</p>
+  </main>
 
 <script>
   /* =========================================================
-     DATA
+     DATA — ALPHABET
      ========================================================= */
   const ALPHABET = [
     { letter: "A", name: "ah" },
@@ -253,16 +342,131 @@
   ];
 
   /* =========================================================
-     ELEMENTS
+     DATA — TOP 100 GERMAN WORDS (de / en / ar)
      ========================================================= */
-  const resultsEl    = document.getElementById("results");
-  const generateBtn  = document.getElementById("generateBtn");
-  const alphabetGrid = document.getElementById("alphabetGrid");
-
-  let selectedCount = 1;
+  const WORDS = [
+    { de: "der",        en: "the (masculine)",   ar: "الـ (مذكر)" },
+    { de: "die",        en: "the (feminine)",    ar: "الـ (مؤنث)" },
+    { de: "das",        en: "the (neuter)",      ar: "الـ (محايد)" },
+    { de: "und",        en: "and",               ar: "و" },
+    { de: "sein",       en: "to be",             ar: "يكون" },
+    { de: "in",         en: "in",                ar: "في" },
+    { de: "ein",        en: "a (masc./neut.)",   ar: "أداة تنكير (مذكر)" },
+    { de: "eine",       en: "a (feminine)",      ar: "أداة تنكير (مؤنث)" },
+    { de: "zu",         en: "to",                ar: "إلى" },
+    { de: "haben",      en: "to have",           ar: "يملك" },
+    { de: "ich",        en: "I",                 ar: "أنا" },
+    { de: "werden",     en: "to become",         ar: "يصبح" },
+    { de: "nicht",      en: "not",               ar: "لا / ليس" },
+    { de: "mit",        en: "with",              ar: "مع" },
+    { de: "es",         en: "it",                ar: "هو (لغير العاقل)" },
+    { de: "sich",       en: "oneself",           ar: "نفسه" },
+    { de: "auf",        en: "on",                ar: "على" },
+    { de: "für",        en: "for",               ar: "من أجل" },
+    { de: "von",        en: "from / of",         ar: "من" },
+    { de: "so",         en: "so",                ar: "هكذا" },
+    { de: "dass",       en: "that",              ar: "أنّ" },
+    { de: "können",     en: "can / to be able",  ar: "يستطيع" },
+    { de: "dieser",     en: "this",              ar: "هذا" },
+    { de: "auch",       en: "also",              ar: "أيضاً" },
+    { de: "als",        en: "as / than",         ar: "مثل / من (مقارنة)" },
+    { de: "bei",        en: "at / near",         ar: "عند" },
+    { de: "um",         en: "around / at",       ar: "حول / عند (الساعة)" },
+    { de: "nach",       en: "after / to",        ar: "بعد / نحو" },
+    { de: "aus",        en: "out of / from",     ar: "من (الداخل)" },
+    { de: "du",         en: "you (informal)",    ar: "أنت" },
+    { de: "wir",        en: "we",                ar: "نحن" },
+    { de: "sie",        en: "she / they",        ar: "هي / هم" },
+    { de: "er",         en: "he",                ar: "هو" },
+    { de: "was",        en: "what",              ar: "ماذا" },
+    { de: "wie",        en: "how",               ar: "كيف" },
+    { de: "aber",       en: "but",               ar: "لكن" },
+    { de: "oder",       en: "or",                ar: "أو" },
+    { de: "wenn",       en: "if / when",         ar: "إذا / عندما" },
+    { de: "noch",       en: "still / yet",       ar: "لا يزال" },
+    { de: "nur",        en: "only",              ar: "فقط" },
+    { de: "schon",      en: "already",           ar: "بالفعل" },
+    { de: "ja",         en: "yes",               ar: "نعم" },
+    { de: "nein",       en: "no",                ar: "لا" },
+    { de: "mehr",       en: "more",              ar: "أكثر" },
+    { de: "sehr",       en: "very",              ar: "جداً" },
+    { de: "hier",       en: "here",              ar: "هنا" },
+    { de: "dort",       en: "there",             ar: "هناك" },
+    { de: "jetzt",      en: "now",               ar: "الآن" },
+    { de: "immer",      en: "always",            ar: "دائماً" },
+    { de: "nie",        en: "never",             ar: "أبداً" },
+    { de: "heute",      en: "today",             ar: "اليوم" },
+    { de: "morgen",     en: "tomorrow",          ar: "غداً" },
+    { de: "gestern",    en: "yesterday",         ar: "أمس" },
+    { de: "gut",        en: "good",              ar: "جيد" },
+    { de: "schlecht",   en: "bad",               ar: "سيئ" },
+    { de: "groß",       en: "big / tall",        ar: "كبير" },
+    { de: "klein",      en: "small",             ar: "صغير" },
+    { de: "neu",        en: "new",               ar: "جديد" },
+    { de: "alt",        en: "old",               ar: "قديم" },
+    { de: "viel",       en: "much / a lot",      ar: "كثير" },
+    { de: "wenig",      en: "little / few",      ar: "قليل" },
+    { de: "machen",     en: "to do / to make",   ar: "يفعل / يصنع" },
+    { de: "gehen",      en: "to go",             ar: "يذهب" },
+    { de: "kommen",     en: "to come",           ar: "يأتي" },
+    { de: "sehen",      en: "to see",            ar: "يرى" },
+    { de: "sagen",      en: "to say",            ar: "يقول" },
+    { de: "sprechen",   en: "to speak",          ar: "يتكلم" },
+    { de: "hören",      en: "to hear",           ar: "يسمع" },
+    { de: "lesen",      en: "to read",           ar: "يقرأ" },
+    { de: "schreiben",  en: "to write",          ar: "يكتب" },
+    { de: "essen",      en: "to eat",            ar: "يأكل" },
+    { de: "trinken",    en: "to drink",          ar: "يشرب" },
+    { de: "arbeiten",   en: "to work",           ar: "يعمل" },
+    { de: "lernen",     en: "to learn",          ar: "يتعلم" },
+    { de: "verstehen",  en: "to understand",     ar: "يفهم" },
+    { de: "wissen",     en: "to know",           ar: "يعرف" },
+    { de: "denken",     en: "to think",          ar: "يفكر" },
+    { de: "kaufen",     en: "to buy",            ar: "يشتري" },
+    { de: "geben",      en: "to give",           ar: "يعطي" },
+    { de: "nehmen",     en: "to take",           ar: "يأخذ" },
+    { de: "finden",     en: "to find",           ar: "يجد" },
+    { de: "brauchen",   en: "to need",           ar: "يحتاج" },
+    { de: "wohnen",     en: "to live / reside",  ar: "يسكن" },
+    { de: "das Haus",   en: "house",             ar: "منزل" },
+    { de: "die Schule", en: "school",            ar: "مدرسة" },
+    { de: "die Straße", en: "street",            ar: "شارع" },
+    { de: "das Wasser", en: "water",             ar: "ماء" },
+    { de: "das Brot",   en: "bread",             ar: "خبز" },
+    { de: "der Tag",    en: "day",               ar: "يوم" },
+    { de: "die Zeit",   en: "time",              ar: "وقت" },
+    { de: "das Jahr",   en: "year",              ar: "سنة" },
+    { de: "der Freund", en: "friend",            ar: "صديق" },
+    { de: "die Familie",en: "family",            ar: "عائلة" },
+    { de: "das Kind",   en: "child",             ar: "طفل" },
+    { de: "die Frau",   en: "woman",             ar: "امرأة" },
+    { de: "der Mann",   en: "man",               ar: "رجل" },
+    { de: "das Geld",   en: "money",             ar: "مال" },
+    { de: "die Arbeit", en: "work / job",        ar: "عمل" },
+    { de: "das Buch",   en: "book",              ar: "كتاب" },
+    { de: "das Leben",  en: "life",              ar: "حياة" }
+  ];
 
   /* =========================================================
-     SPEECH
+     ELEMENTS
+     ========================================================= */
+  const letterResultsEl = document.getElementById("letterResults");
+  const generateBtn     = document.getElementById("generateBtn");
+  const alphabetGrid    = document.getElementById("alphabetGrid");
+
+  const wordResultsEl   = document.getElementById("wordResults");
+  const wordGenerateBtn = document.getElementById("wordGenerateBtn");
+  const wordListEl      = document.getElementById("wordList");
+  const wordSearchEl    = document.getElementById("wordSearch");
+
+  const menuBtn    = document.getElementById("menuBtn");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  let selectedLetterCount = 1;
+  let selectedWordCount   = 1;
+
+  /* =========================================================
+     SPEECH (Web Speech API – German voice)
      ========================================================= */
   let germanVoice = null;
 
@@ -286,7 +490,7 @@
 
     const utter = new SpeechSynthesisUtterance(text);
     utter.lang  = "de-DE";
-    utter.rate  = 0.8;
+    utter.rate  = 0.8;   // slower = easier to imitate
     utter.pitch = 1;
     if (germanVoice) utter.voice = germanVoice;
 
@@ -294,10 +498,47 @@
   }
 
   /* =========================================================
-     RANDOM PRACTICE
+     MOBILE NAVIGATION
      ========================================================= */
-  function pickRandom(n) {
-    const pool = [...ALPHABET];
+  menuBtn.addEventListener("click", () => {
+    const isHidden = mobileMenu.classList.toggle("hidden");
+    menuBtn.setAttribute("aria-expanded", String(!isHidden));
+    menuBtn.textContent = isHidden ? "☰" : "✕";
+  });
+
+  // close mobile menu after choosing a section
+  mobileMenu.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      mobileMenu.classList.add("hidden");
+      menuBtn.textContent = "☰";
+      menuBtn.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  /* =========================================================
+     SCROLL-SPY (highlight active nav link)
+     ========================================================= */
+  const navLinks = document.querySelectorAll("[data-nav-link]");
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link =>
+            link.classList.toggle("active", link.dataset.navLink === entry.target.id)
+          );
+        }
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+
+    document.querySelectorAll("section[data-nav]").forEach(s => observer.observe(s));
+  }
+
+  /* =========================================================
+     SECTION 1 — RANDOM LETTERS
+     ========================================================= */
+  function pickRandomItems(arr, n) {
+    const pool = [...arr];
     for (let i = pool.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [pool[i], pool[j]] = [pool[j], pool[i]];
@@ -305,27 +546,26 @@
     return pool.slice(0, Math.min(n, pool.length));
   }
 
-  function makeCard({ letter, name }, isLarge) {
+  function makeLetterCard({ letter, name }, isLarge) {
     const btn = document.createElement("button");
     btn.className = isLarge
-      ? "result-card group relative flex w-full max-w-xs flex-col items-center justify-center rounded-2xl bg-white/5 py-12 ring-1 ring-white/10 transition hover:bg-white/10 hover:ring-amber-300/40 active:scale-95"
-      : "result-card group relative flex flex-col items-center justify-center rounded-2xl bg-white/5 py-6 ring-1 ring-white/10 transition hover:bg-white/10 hover:ring-amber-300/40 active:scale-95";
+      ? "group relative flex w-full max-w-xs flex-col items-center justify-center rounded-2xl bg-white/5 py-12 ring-1 ring-white/10 transition hover:bg-white/10 hover:ring-amber-300/40 active:scale-95"
+      : "group relative flex flex-col items-center justify-center rounded-2xl bg-white/5 py-6 ring-1 ring-white/10 transition hover:bg-white/10 hover:ring-amber-300/40 active:scale-95";
 
     btn.innerHTML = `
-      <span class="result-letter ${isLarge ? "text-8xl" : "text-5xl"} font-black leading-none pop">${letter}</span>
-      <span class="result-name mt-2 ${isLarge ? "text-lg" : "text-sm"} h-6 font-semibold text-amber-300"></span>
+      <span class="${isLarge ? "text-8xl" : "text-5xl"} font-black leading-none pop">${letter}</span>
+      <span class="card-name mt-2 ${isLarge ? "text-lg" : "text-sm"} h-6 font-semibold text-amber-300"></span>
       <span class="absolute bottom-1.5 right-2 text-[10px] text-white/30 group-hover:text-white/60">🔊</span>
     `;
 
     btn.addEventListener("click", () => {
-      const nameEl = btn.querySelector(".result-name");
+      const nameEl = btn.querySelector(".card-name");
       if (!nameEl.textContent) {
         nameEl.textContent = "“" + name + "”";
         nameEl.classList.add("fade-up");
       }
       speak(letter);
 
-      // press feedback
       btn.classList.remove("tap");
       void btn.offsetWidth;
       btn.classList.add("tap");
@@ -334,30 +574,25 @@
     return btn;
   }
 
-  function renderResults(letters) {
-    resultsEl.innerHTML = "";
+  function renderLetters() {
+    const letters = pickRandomItems(ALPHABET, selectedLetterCount);
+    letterResultsEl.innerHTML = "";
 
     if (letters.length === 1) {
-      resultsEl.className = "mt-6 flex justify-center";
-      resultsEl.appendChild(makeCard(letters[0], true));
+      letterResultsEl.className = "mt-6 flex justify-center";
+      letterResultsEl.appendChild(makeLetterCard(letters[0], true));
     } else {
-      resultsEl.className =
+      letterResultsEl.className =
         "mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5";
-      letters.forEach(item => resultsEl.appendChild(makeCard(item, false)));
+      letters.forEach(l => letterResultsEl.appendChild(makeLetterCard(l, false)));
     }
   }
 
-  function generate() {
-    renderResults(pickRandom(selectedCount));
-  }
-
-  /* =========================================================
-     COUNT BUTTONS
-     ========================================================= */
+  // count buttons
   const countBtns = document.querySelectorAll(".count-btn");
 
-  function setActiveCount(btn) {
-    countBtns.forEach(b => {
+  function setActiveCount(btn, group) {
+    group.forEach(b => {
       b.classList.remove("bg-amber-400", "text-slate-900", "font-bold");
       b.classList.add("bg-white/10", "font-semibold", "text-white");
     });
@@ -367,33 +602,124 @@
 
   countBtns.forEach(btn => {
     btn.addEventListener("click", () => {
-      selectedCount = parseInt(btn.dataset.count, 10);
-      setActiveCount(btn);
-      generate(); // auto-regenerate when count changes
+      selectedLetterCount = parseInt(btn.dataset.count, 10);
+      setActiveCount(btn, countBtns);
+      renderLetters();
     });
   });
 
-  /* =========================================================
-     GENERATE BUTTON + SPACE BAR
-     ========================================================= */
-  generateBtn.addEventListener("click", generate);
+  generateBtn.addEventListener("click", renderLetters);
 
-  document.addEventListener("keydown", (e) => {
-    if (e.code === "Space") {
-      e.preventDefault();
-      generate();
+  /* =========================================================
+     SECTION 3 — TOP 100 WORDS (random practice)
+     ========================================================= */
+  function makeWordCard(word, isLarge) {
+    const btn = document.createElement("button");
+    btn.className = isLarge
+      ? "group relative flex w-full max-w-md flex-col items-center justify-center rounded-2xl bg-white/5 px-6 py-10 ring-1 ring-white/10 transition hover:bg-white/10 hover:ring-amber-300/40 active:scale-95"
+      : "group relative flex flex-col items-center justify-center rounded-2xl bg-white/5 px-4 py-6 ring-1 ring-white/10 transition hover:bg-white/10 hover:ring-amber-300/40 active:scale-95";
+
+    btn.innerHTML = `
+      <span class="${isLarge ? "text-5xl" : "text-3xl"} font-black leading-none">${word.de}</span>
+      <span class="card-reveal mt-3 w-full flex-col items-center gap-1 text-center" style="display:none">
+        <span class="block text-sm font-semibold text-white/85">${word.en}</span>
+        <span class="block text-sm text-amber-300" dir="rtl">${word.ar}</span>
+      </span>
+      <span class="mt-3 text-[10px] uppercase tracking-wider text-white/30 group-hover:text-white/60">
+        tap to reveal &amp; hear
+      </span>
+    `;
+
+    const reveal = btn.querySelector(".card-reveal");
+
+    btn.addEventListener("click", () => {
+      if (reveal.style.display === "none") {
+        reveal.style.display = "flex";
+        reveal.classList.add("fade-up");
+      }
+      speak(word.de);
+
+      btn.classList.remove("tap");
+      void btn.offsetWidth;
+      btn.classList.add("tap");
+    });
+
+    return btn;
+  }
+
+  function renderWords() {
+    const words = pickRandomItems(WORDS, selectedWordCount);
+    wordResultsEl.innerHTML = "";
+
+    if (words.length === 1) {
+      wordResultsEl.className = "mt-6 flex justify-center";
+      wordResultsEl.appendChild(makeWordCard(words[0], true));
+    } else {
+      wordResultsEl.className = "mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3";
+      words.forEach(w => wordResultsEl.appendChild(makeWordCard(w, false)));
     }
+  }
+
+  const wcountBtns = document.querySelectorAll(".wcount-btn");
+
+  wcountBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      selectedWordCount = parseInt(btn.dataset.wcount, 10);
+      setActiveCount(btn, wcountBtns);
+      renderWords();
+    });
   });
 
+  wordGenerateBtn.addEventListener("click", renderWords);
+
   /* =========================================================
-     FULL ALPHABET GRID
+     SECTION 3 — FULL WORD LIST + SEARCH
+     ========================================================= */
+  function renderWordList(filter = "") {
+    const q = filter.trim().toLowerCase();
+    const list = WORDS.filter(w =>
+      !q ||
+      w.de.toLowerCase().includes(q) ||
+      w.en.toLowerCase().includes(q) ||
+      w.ar.includes(q)
+    );
+
+    wordListEl.innerHTML = "";
+
+    if (!list.length) {
+      wordListEl.innerHTML =
+        '<p class="col-span-full py-6 text-center text-sm text-white/40">No words found 🤔</p>';
+      return;
+    }
+
+    list.forEach(word => {
+      const btn = document.createElement("button");
+      btn.className =
+        "group rounded-xl bg-white/5 p-3 text-left ring-1 ring-white/10 transition " +
+        "hover:bg-white/10 hover:ring-amber-300/40 active:scale-95";
+      btn.innerHTML = `
+        <div class="flex items-center justify-between gap-2">
+          <span class="font-bold text-amber-300">${word.de}</span>
+          <span class="text-[10px] text-white/30 group-hover:text-white/70">🔊</span>
+        </div>
+        <div class="mt-1 text-xs text-white/70">${word.en}</div>
+        <div class="mt-1 text-xs text-white/50" dir="rtl">${word.ar}</div>
+      `;
+      btn.addEventListener("click", () => speak(word.de));
+      wordListEl.appendChild(btn);
+    });
+  }
+
+  wordSearchEl.addEventListener("input", e => renderWordList(e.target.value));
+
+  /* =========================================================
+     ALPHABET GRID
      ========================================================= */
   ALPHABET.forEach(({ letter, name }) => {
     const btn = document.createElement("button");
     btn.className =
-      "group flex flex-col items-center justify-center rounded-xl " +
-      "bg-white/5 py-3 ring-1 ring-white/10 transition hover:bg-white/10 " +
-      "hover:ring-amber-300/50 active:scale-95";
+      "group flex flex-col items-center justify-center rounded-xl bg-white/5 py-3 " +
+      "ring-1 ring-white/10 transition hover:bg-white/10 hover:ring-amber-300/50 active:scale-95";
     btn.innerHTML = `
       <span class="text-3xl font-black leading-none">${letter}</span>
       <span class="mt-1 text-[11px] uppercase tracking-wide text-white/50">${name}</span>
@@ -408,17 +734,30 @@
   });
 
   /* =========================================================
-     SPEAK BUTTONS (special chars + practice words)
+     SPEAK BUTTONS (special characters + mini practice)
      ========================================================= */
   document.querySelectorAll("[data-speak]").forEach(btn => {
     btn.addEventListener("click", () => speak(btn.dataset.speak));
   });
 
   /* =========================================================
+     SPACE BAR → regenerate letters
+     ========================================================= */
+  document.addEventListener("keydown", e => {
+    if (e.code === "Space" && document.activeElement !== wordSearchEl) {
+      e.preventDefault();
+      renderLetters();
+    }
+  });
+
+  /* =========================================================
      INITIAL RENDER
      ========================================================= */
-  setActiveCount(countBtns[0]); // count = 1 is active by default
-  generate();
+  setActiveCount(countBtns[0], countBtns);
+  setActiveCount(wcountBtns[0], wcountBtns);
+  renderLetters();
+  renderWords();
+  renderWordList();
 </script>
 </body>
 </html>
