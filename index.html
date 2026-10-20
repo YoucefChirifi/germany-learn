@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>German Learning – Alphabet & Words</title>
+<title>German Learning – Alphabet, Words & Sentences</title>
 
 <!-- Tailwind CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
@@ -49,11 +49,12 @@
 
       <!-- Desktop -->
       <ul class="hidden items-center gap-1 text-sm md:flex">
-        <li><a href="#home"      data-nav class="nav-link rounded-lg px-3 py-2 text-white/70 transition hover:bg-white/10 hover:text-white">🏠 Home</a></li>
-        <li><a href="#alphabet"  data-nav class="nav-link rounded-lg px-3 py-2 text-white/70 transition hover:bg-white/10 hover:text-white">📖 Alphabet</a></li>
-        <li><a href="#words"     data-nav class="nav-link rounded-lg px-3 py-2 text-white/70 transition hover:bg-white/10 hover:text-white">💬 Words</a></li>
-        <li><a href="#rules"     data-nav class="nav-link rounded-lg px-3 py-2 text-white/70 transition hover:bg-white/10 hover:text-white">📏 Rules</a></li>
-        <li><a href="#practice"  data-nav class="nav-link rounded-lg px-3 py-2 text-white/70 transition hover:bg-white/10 hover:text-white">🗣️ Practice</a></li>
+        <li><a href="#home"       data-nav class="nav-link rounded-lg px-3 py-2 text-white/70 transition hover:bg-white/10 hover:text-white">🏠 Home</a></li>
+        <li><a href="#alphabet"   data-nav class="nav-link rounded-lg px-3 py-2 text-white/70 transition hover:bg-white/10 hover:text-white">📖 Alphabet</a></li>
+        <li><a href="#words"      data-nav class="nav-link rounded-lg px-3 py-2 text-white/70 transition hover:bg-white/10 hover:text-white">💬 Words</a></li>
+        <li><a href="#sentences"  data-nav class="nav-link rounded-lg px-3 py-2 text-white/70 transition hover:bg-white/10 hover:text-white">📝 Sentences</a></li>
+        <li><a href="#rules"      data-nav class="nav-link rounded-lg px-3 py-2 text-white/70 transition hover:bg-white/10 hover:text-white">📏 Rules</a></li>
+        <li><a href="#practice"   data-nav class="nav-link rounded-lg px-3 py-2 text-white/70 transition hover:bg-white/10 hover:text-white">🗣️ Practice</a></li>
       </ul>
 
       <button id="menuBtn" aria-label="Open menu" aria-expanded="false"
@@ -64,11 +65,12 @@
 
     <!-- Mobile dropdown -->
     <ul id="mobileMenu" class="hidden space-y-1 border-t border-white/10 px-4 pb-4 pt-2 text-sm md:hidden">
-      <li><a href="#home"      class="block rounded-lg px-3 py-2.5 text-white/80 transition hover:bg-white/10">🏠 Home</a></li>
-      <li><a href="#alphabet"  class="block rounded-lg px-3 py-2.5 text-white/80 transition hover:bg-white/10">📖 Alphabet</a></li>
-      <li><a href="#words"     class="block rounded-lg px-3 py-2.5 text-white/80 transition hover:bg-white/10">💬 Words</a></li>
-      <li><a href="#rules"     class="block rounded-lg px-3 py-2.5 text-white/80 transition hover:bg-white/10">📏 Rules</a></li>
-      <li><a href="#practice"  class="block rounded-lg px-3 py-2.5 text-white/80 transition hover:bg-white/10">🗣️ Practice</a></li>
+      <li><a href="#home"       class="block rounded-lg px-3 py-2.5 text-white/80 transition hover:bg-white/10">🏠 Home</a></li>
+      <li><a href="#alphabet"   class="block rounded-lg px-3 py-2.5 text-white/80 transition hover:bg-white/10">📖 Alphabet</a></li>
+      <li><a href="#words"      class="block rounded-lg px-3 py-2.5 text-white/80 transition hover:bg-white/10">💬 Words</a></li>
+      <li><a href="#sentences"  class="block rounded-lg px-3 py-2.5 text-white/80 transition hover:bg-white/10">📝 Sentences</a></li>
+      <li><a href="#rules"      class="block rounded-lg px-3 py-2.5 text-white/80 transition hover:bg-white/10">📏 Rules</a></li>
+      <li><a href="#practice"   class="block rounded-lg px-3 py-2.5 text-white/80 transition hover:bg-white/10">🗣️ Practice</a></li>
     </ul>
   </nav>
 
@@ -81,7 +83,7 @@
       <div class="fade-up text-center">
         <h1 class="text-4xl font-black tracking-tight sm:text-5xl">Willkommen! 👋</h1>
         <p class="mx-auto mt-3 max-w-md text-white/60">
-          Your German learning companion — pronounce every letter, master the top 100 words, and pick up the key rules.
+          Your German learning companion — pronounce every letter, master the top 100 words, and speak the most common sentences.
         </p>
       </div>
 
@@ -98,13 +100,19 @@
           <p class="mt-1 text-sm text-white/60">The most-used German words with English and Arabic meanings.</p>
         </a>
 
+        <a href="#sentences" class="group rounded-3xl border border-white/15 bg-white/5 p-6 transition hover:border-amber-300/40 hover:bg-white/10">
+          <div class="text-4xl">📝</div>
+          <h2 class="mt-3 text-xl font-bold group-hover:text-amber-300">Top 100 Sentences</h2>
+          <p class="mt-1 text-sm text-white/60">Everyday German sentences with English and Arabic translations.</p>
+        </a>
+
         <a href="#rules" class="group rounded-3xl border border-white/15 bg-white/5 p-6 transition hover:border-amber-300/40 hover:bg-white/10">
           <div class="text-4xl">📏</div>
           <h2 class="mt-3 text-xl font-bold group-hover:text-amber-300">Pronunciation Rules</h2>
           <p class="mt-1 text-sm text-white/60">Eight essential rules — W, V, J, Z, EI, IE, SCH, CH.</p>
         </a>
 
-        <a href="#practice" class="group rounded-3xl border border-white/15 bg-white/5 p-6 transition hover:border-amber-300/40 hover:bg-white/10">
+        <a href="#practice" class="group rounded-3xl border border-white/15 bg-white/5 p-6 transition hover:border-amber-300/40 hover:bg-white/10 sm:col-span-2">
           <div class="text-4xl">🗣️</div>
           <h2 class="mt-3 text-xl font-bold group-hover:text-amber-300">Mini Practice</h2>
           <p class="mt-1 text-sm text-white/60">Read common words aloud and check yourself with audio.</p>
@@ -124,7 +132,6 @@
         <p class="mt-1 text-sm text-white/60">Practice randomly, then explore every letter.</p>
       </header>
 
-      <!-- Random letter practice -->
       <div class="rounded-3xl border border-white/20 bg-white/10 p-6 shadow-2xl backdrop-blur sm:p-8">
         <div class="flex flex-wrap items-center justify-between gap-2">
           <h2 class="text-lg font-bold text-white/80">🎲 Random Letter Practice</h2>
@@ -153,7 +160,6 @@
         <p class="mt-4 text-center text-xs text-white/40">Tip: press the space bar to regenerate</p>
       </div>
 
-      <!-- Full alphabet grid -->
       <div class="rounded-3xl border border-white/20 bg-white/10 p-6 shadow-xl backdrop-blur">
         <div class="flex flex-wrap items-center justify-between gap-2">
           <h2 class="text-xl font-bold">Full Alphabet</h2>
@@ -214,7 +220,6 @@
         <p class="mt-1 text-sm text-white/60">Practice randomly or browse the full list with English &amp; Arabic meanings.</p>
       </header>
 
-      <!-- Random word practice -->
       <div class="rounded-3xl border border-white/20 bg-white/10 p-6 shadow-2xl backdrop-blur sm:p-8">
         <div class="flex flex-wrap items-center justify-between gap-2">
           <h2 class="text-lg font-bold text-white/80">🎲 Random Word Practice</h2>
@@ -239,7 +244,6 @@
         <div id="wordResults" class="mt-6 min-h-[120px]"></div>
       </div>
 
-      <!-- Full word list -->
       <div class="rounded-3xl border border-white/20 bg-white/10 p-6 shadow-xl backdrop-blur">
         <div class="flex flex-wrap items-center justify-between gap-2">
           <h2 class="text-xl font-bold">📚 All 100 Words</h2>
@@ -251,6 +255,56 @@
                  outline-none transition placeholder:text-white/30 focus:ring-amber-300/50" />
 
         <div id="wordList" class="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3"></div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         VIEW: SENTENCES
+         ========================================================= -->
+    <section id="sentences" data-view class="hidden space-y-6">
+
+      <header class="fade-up">
+        <h1 class="text-3xl font-black tracking-tight">📝 Top 100 German Sentences</h1>
+        <p class="mt-1 text-sm text-white/60">Everyday sentences you’ll actually use — with English &amp; Arabic translations.</p>
+      </header>
+
+      <!-- Random sentence practice -->
+      <div class="rounded-3xl border border-white/20 bg-white/10 p-6 shadow-2xl backdrop-blur sm:p-8">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <h2 class="text-lg font-bold text-white/80">🎲 Random Sentence Practice</h2>
+          <span class="text-xs text-white/40">Tap a card to reveal &amp; hear</span>
+        </div>
+
+        <div class="mt-5">
+          <label class="text-xs uppercase tracking-wider text-white/50">How many sentences?</label>
+          <div class="mt-2 flex flex-wrap gap-2">
+            <button data-scount="1" class="scount-btn rounded-lg bg-amber-400 px-4 py-2 text-sm font-bold text-slate-900 transition hover:bg-amber-300">1</button>
+            <button data-scount="3" class="scount-btn rounded-lg bg-white/10 px-4 py-2 text-sm font-semibold transition hover:bg-white/20">3</button>
+            <button data-scount="5" class="scount-btn rounded-lg bg-white/10 px-4 py-2 text-sm font-semibold transition hover:bg-white/20">5</button>
+          </div>
+        </div>
+
+        <button id="sentenceGenerateBtn"
+          class="mt-4 w-full rounded-xl bg-amber-400 py-3 text-lg font-bold text-slate-900
+                 transition hover:bg-amber-300 active:scale-95">
+          🎲 Generate Sentences
+        </button>
+
+        <div id="sentenceResults" class="mt-6 min-h-[120px]"></div>
+      </div>
+
+      <!-- Full sentence list -->
+      <div class="rounded-3xl border border-white/20 bg-white/10 p-6 shadow-xl backdrop-blur">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <h2 class="text-xl font-bold">📚 All 100 Sentences</h2>
+          <span class="text-xs text-white/40">Tap any sentence to hear it</span>
+        </div>
+
+        <input id="sentenceSearch" type="text" placeholder="🔍 Search German, English or Arabic…"
+          class="mt-4 w-full rounded-xl bg-white/5 px-4 py-2.5 text-sm text-white ring-1 ring-white/10
+                 outline-none transition placeholder:text-white/30 focus:ring-amber-300/50" />
+
+        <div id="sentenceList" class="mt-4 grid grid-cols-1 gap-2 md:grid-cols-2"></div>
       </div>
     </section>
 
@@ -484,22 +538,162 @@
   ];
 
   /* =========================================================
+     DATA — TOP 100 SENTENCES
+     ========================================================= */
+  const SENTENCES = [
+    // Greetings & basics
+    { de: "Guten Morgen!", en: "Good morning!", ar: "صباح الخير!" },
+    { de: "Guten Tag!", en: "Good day!", ar: "نهارك سعيد!" },
+    { de: "Guten Abend!", en: "Good evening!", ar: "مساء الخير!" },
+    { de: "Gute Nacht!", en: "Good night!", ar: "تصبح على خير!" },
+    { de: "Hallo! Wie geht es dir?", en: "Hello! How are you?", ar: "مرحباً! كيف حالك؟" },
+    { de: "Mir geht es gut, danke.", en: "I'm fine, thank you.", ar: "أنا بخير، شكراً." },
+    { de: "Danke schön!", en: "Thank you very much!", ar: "شكراً جزيلاً!" },
+    { de: "Bitte schön!", en: "You're welcome!", ar: "على الرحب والسعة!" },
+    { de: "Entschuldigung!", en: "Excuse me! / Sorry!", ar: "عذراً!" },
+    { de: "Es tut mir leid.", en: "I'm sorry.", ar: "أنا آسف." },
+    { de: "Ja, natürlich.", en: "Yes, of course.", ar: "نعم، بالطبع." },
+    { de: "Nein, danke.", en: "No, thank you.", ar: "لا، شكراً." },
+    { de: "Vielleicht später.", en: "Maybe later.", ar: "ربما لاحقاً." },
+    { de: "Kein Problem!", en: "No problem!", ar: "لا مشكلة!" },
+    { de: "Alles gut!", en: "All good!", ar: "كل شيء بخير!" },
+    { de: "Bis später!", en: "See you later!", ar: "أراك لاحقاً!" },
+    { de: "Bis morgen!", en: "See you tomorrow!", ar: "أراك غداً!" },
+    { de: "Auf Wiedersehen!", en: "Goodbye!", ar: "إلى اللقاء!" },
+    { de: "Tschüss!", en: "Bye!", ar: "وداعاً!" },
+    { de: "Schönen Tag noch!", en: "Have a nice day!", ar: "أتمنى لك يوماً سعيداً!" },
+
+    // Introductions
+    { de: "Wie heißt du?", en: "What's your name?", ar: "ما اسمك؟" },
+    { de: "Ich heiße Ahmed.", en: "My name is Ahmed.", ar: "اسمي أحمد." },
+    { de: "Freut mich, dich kennenzulernen.", en: "Nice to meet you.", ar: "تشرفت بلقائك." },
+    { de: "Woher kommst du?", en: "Where are you from?", ar: "من أين أنت؟" },
+    { de: "Ich komme aus Algerien.", en: "I'm from Algeria.", ar: "أنا من الجزائر." },
+    { de: "Wie alt bist du?", en: "How old are you?", ar: "كم عمرك؟" },
+    { de: "Ich bin 25 Jahre alt.", en: "I am 25 years old.", ar: "عمري 25 سنة." },
+    { de: "Wo wohnst du?", en: "Where do you live?", ar: "أين تسكن؟" },
+    { de: "Ich wohne in Berlin.", en: "I live in Berlin.", ar: "أسكن في برلين." },
+    { de: "Was machst du beruflich?", en: "What do you do for a living?", ar: "ما هو عملك؟" },
+
+    // Language
+    { de: "Sprichst du Englisch?", en: "Do you speak English?", ar: "هل تتحدث الإنجليزية؟" },
+    { de: "Ich spreche kein Deutsch.", en: "I don't speak German.", ar: "لا أتحدث الألمانية." },
+    { de: "Ich lerne Deutsch.", en: "I'm learning German.", ar: "أتعلم الألمانية." },
+    { de: "Ich verstehe nicht.", en: "I don't understand.", ar: "لا أفهم." },
+    { de: "Ich verstehe.", en: "I understand.", ar: "أفهم." },
+    { de: "Können Sie das wiederholen?", en: "Could you repeat that?", ar: "هل يمكنك تكرار ذلك؟" },
+    { de: "Sprechen Sie bitte langsamer.", en: "Please speak slower.", ar: "تحدث بشكل أبطأ من فضلك." },
+    { de: "Wie sagt man das auf Deutsch?", en: "How do you say that in German?", ar: "كيف تقول ذلك بالألمانية؟" },
+    { de: "Was bedeutet das?", en: "What does that mean?", ar: "ماذا يعني ذلك؟" },
+    { de: "Wie schreibt man das?", en: "How do you spell that?", ar: "كيف تكتب ذلك؟" },
+
+    // Shopping
+    { de: "Wie viel kostet das?", en: "How much does this cost?", ar: "كم سعر هذا؟" },
+    { de: "Das ist zu teuer.", en: "That's too expensive.", ar: "هذا غالٍ جداً." },
+    { de: "Das ist billig.", en: "That's cheap.", ar: "هذا رخيص." },
+    { de: "Ich möchte das kaufen.", en: "I would like to buy this.", ar: "أريد شراء هذا." },
+    { de: "Ich nehme das.", en: "I'll take this.", ar: "سآخذ هذا." },
+    { de: "Haben Sie das in meiner Größe?", en: "Do you have this in my size?", ar: "هل لديك هذا بمقاسي؟" },
+    { de: "Kann ich mit Karte zahlen?", en: "Can I pay by card?", ar: "هل يمكنني الدفع بالبطاقة؟" },
+    { de: "Ich schaue nur.", en: "I'm just looking.", ar: "أنا أتفرج فقط." },
+    { de: "Wo ist die Kasse?", en: "Where is the checkout?", ar: "أين الكاشير؟" },
+    { de: "Ich brauche eine Tüte, bitte.", en: "I need a bag, please.", ar: "أحتاج كيساً من فضلك." },
+
+    // Restaurant & food
+    { de: "Die Speisekarte, bitte.", en: "The menu, please.", ar: "قائمة الطعام من فضلك." },
+    { de: "Ich möchte bestellen.", en: "I would like to order.", ar: "أريد أن أطلب." },
+    { de: "Ein Wasser, bitte.", en: "A water, please.", ar: "ماء من فضلك." },
+    { de: "Ich habe Hunger.", en: "I'm hungry.", ar: "أنا جائع." },
+    { de: "Ich habe Durst.", en: "I'm thirsty.", ar: "أنا عطشان." },
+    { de: "Das schmeckt gut!", en: "That tastes good!", ar: "هذا لذيذ!" },
+    { de: "Ich bin satt.", en: "I'm full.", ar: "شبعت." },
+    { de: "Die Rechnung, bitte.", en: "The bill, please.", ar: "الفاتورة من فضلك." },
+    { de: "Ich bin allergisch gegen Nüsse.", en: "I'm allergic to nuts.", ar: "لدي حساسية من المكسرات." },
+    { de: "Können Sie mir etwas empfehlen?", en: "Could you recommend something?", ar: "هل يمكنك أن توصي بشيء؟" },
+
+    // Directions & travel
+    { de: "Wo ist der Bahnhof?", en: "Where is the train station?", ar: "أين محطة القطار؟" },
+    { de: "Wie komme ich zum Flughafen?", en: "How do I get to the airport?", ar: "كيف أصل إلى المطار؟" },
+    { de: "Gehen Sie geradeaus.", en: "Go straight ahead.", ar: "امشِ مباشرة." },
+    { de: "Biegen Sie links ab.", en: "Turn left.", ar: "انعطف يساراً." },
+    { de: "Biegen Sie rechts ab.", en: "Turn right.", ar: "انعطف يميناً." },
+    { de: "Wie weit ist es von hier?", en: "How far is it from here?", ar: "كم يبعد من هنا؟" },
+    { de: "Ich bin verloren.", en: "I'm lost.", ar: "أنا تائه." },
+    { de: "Ich suche ein Hotel.", en: "I'm looking for a hotel.", ar: "أبحث عن فندق." },
+    { de: "Wo ist die Toilette?", en: "Where is the toilet?", ar: "أين الحمام؟" },
+    { de: "Ich brauche ein Taxi.", en: "I need a taxi.", ar: "أحتاج سيارة أجرة." },
+
+    // Time
+    { de: "Wie spät ist es?", en: "What time is it?", ar: "كم الساعة؟" },
+    { de: "Es ist halb acht.", en: "It's half past seven.", ar: "الساعة السابعة والنصف." },
+    { de: "Ich habe keine Zeit.", en: "I have no time.", ar: "ليس لدي وقت." },
+    { de: "Ich bin beschäftigt.", en: "I'm busy.", ar: "أنا مشغول." },
+    { de: "Ich komme gleich.", en: "I'll be right there.", ar: "سآتي حالاً." },
+    { de: "Wann beginnt es?", en: "When does it start?", ar: "متى يبدأ؟" },
+    { de: "Seit wann lernst du Deutsch?", en: "Since when have you been learning German?", ar: "منذ متى تتعلم الألمانية؟" },
+    { de: "Ich lerne seit einem Jahr Deutsch.", en: "I've been learning German for a year.", ar: "أتعلم الألمانية منذ عام." },
+
+    // Feelings & states
+    { de: "Ich bin müde.", en: "I'm tired.", ar: "أنا متعب." },
+    { de: "Ich bin glücklich.", en: "I'm happy.", ar: "أنا سعيد." },
+    { de: "Ich bin traurig.", en: "I'm sad.", ar: "أنا حزين." },
+    { de: "Ich bin krank.", en: "I'm sick.", ar: "أنا مريض." },
+    { de: "Ich bin nervös.", en: "I'm nervous.", ar: "أنا متوتر." },
+    { de: "Ich fühle mich nicht gut.", en: "I don't feel well.", ar: "لا أشعر بحال جيدة." },
+    { de: "Ich brauche einen Arzt.", en: "I need a doctor.", ar: "أحتاج طبيباً." },
+    { de: "Es geht mir besser.", en: "I feel better.", ar: "أشعر بتحسن." },
+
+    // Requests & help
+    { de: "Können Sie mir helfen?", en: "Can you help me?", ar: "هل يمكنك مساعدتي؟" },
+    { de: "Ich brauche Hilfe.", en: "I need help.", ar: "أحتاج مساعدة." },
+    { de: "Kannst du mir einen Gefallen tun?", en: "Can you do me a favour?", ar: "هل يمكنك أن تخدم لي خدمة؟" },
+    { de: "Darf ich Sie etwas fragen?", en: "May I ask you something?", ar: "هل يمكنني أن أسألك شيئاً؟" },
+    { de: "Würden Sie das bitte wiederholen?", en: "Would you please repeat that?", ar: "هل تعيد ذلك من فضلك؟" },
+    { de: "Ich hätte eine Frage.", en: "I have a question.", ar: "لدي سؤال." },
+
+    // Weather
+    { de: "Wie ist das Wetter heute?", en: "How is the weather today?", ar: "كيف الطقس اليوم؟" },
+    { de: "Es ist sonnig.", en: "It's sunny.", ar: "الجو مشمس." },
+    { de: "Es regnet stark.", en: "It's raining heavily.", ar: "تمطر بغزارة." },
+    { de: "Es ist sehr kalt.", en: "It's very cold.", ar: "الجو بارد جداً." },
+    { de: "Es ist warm draußen.", en: "It's warm outside.", ar: "الجو دافئ في الخارج." },
+
+    // Social & kind words
+    { de: "Ich liebe dich.", en: "I love you.", ar: "أحبك." },
+    { de: "Ich vermisse dich.", en: "I miss you.", ar: "أفتقدك." },
+    { de: "Viel Glück!", en: "Good luck!", ar: "حظاً سعيداً!" },
+    { de: "Herzlichen Glückwunsch!", en: "Congratulations!", ar: "تهانينا!" },
+    { de: "Willkommen in Deutschland!", en: "Welcome to Germany!", ar: "أهلاً وسهلاً بك في ألمانيا!" },
+    { de: "Gute Reise!", en: "Have a good trip!", ar: "رحلة سعيدة!" },
+    { de: "Sei vorsichtig!", en: "Be careful!", ar: "كن حذراً!" },
+    { de: "Schlaf gut!", en: "Sleep well!", ar: "نوم هنيء!" },
+    { de: "Guten Appetit!", en: "Enjoy your meal!", ar: "بالهناء والشفاء!" },
+    { de: "Herzlich willkommen!", en: "Warm welcome!", ar: "أهلاً وسهلاً حاراً!" }
+  ];
+
+  /* =========================================================
      ELEMENTS
      ========================================================= */
-  const letterResultsEl = document.getElementById("letterResults");
-  const generateBtn     = document.getElementById("generateBtn");
-  const alphabetGrid    = document.getElementById("alphabetGrid");
+  const letterResultsEl   = document.getElementById("letterResults");
+  const generateBtn       = document.getElementById("generateBtn");
+  const alphabetGrid      = document.getElementById("alphabetGrid");
 
-  const wordResultsEl   = document.getElementById("wordResults");
-  const wordGenerateBtn = document.getElementById("wordGenerateBtn");
-  const wordListEl      = document.getElementById("wordList");
-  const wordSearchEl    = document.getElementById("wordSearch");
+  const wordResultsEl     = document.getElementById("wordResults");
+  const wordGenerateBtn   = document.getElementById("wordGenerateBtn");
+  const wordListEl        = document.getElementById("wordList");
+  const wordSearchEl      = document.getElementById("wordSearch");
+
+  const sentenceResultsEl   = document.getElementById("sentenceResults");
+  const sentenceGenerateBtn = document.getElementById("sentenceGenerateBtn");
+  const sentenceListEl      = document.getElementById("sentenceList");
+  const sentenceSearchEl    = document.getElementById("sentenceSearch");
 
   const menuBtn    = document.getElementById("menuBtn");
   const mobileMenu = document.getElementById("mobileMenu");
 
-  let selectedLetterCount = 1;
-  let selectedWordCount   = 1;
+  let selectedLetterCount   = 1;
+  let selectedWordCount     = 1;
+  let selectedSentenceCount = 1;
 
   /* =========================================================
      SPEECH (Web Speech API – German voice)
@@ -526,7 +720,7 @@
 
     const utter = new SpeechSynthesisUtterance(text);
     utter.lang  = "de-DE";
-    utter.rate  = 0.8;
+    utter.rate  = 0.85;
     utter.pitch = 1;
     if (germanVoice) utter.voice = germanVoice;
 
@@ -534,9 +728,9 @@
   }
 
   /* =========================================================
-     ROUTER — show one view at a time
+     ROUTER
      ========================================================= */
-  const VALID_VIEWS = ["home", "alphabet", "words", "rules", "practice"];
+  const VALID_VIEWS = ["home", "alphabet", "words", "sentences", "rules", "practice"];
 
   function route() {
     let id = (window.location.hash || "#home").slice(1);
@@ -550,7 +744,6 @@
       a.classList.toggle("active", a.getAttribute("href") === "#" + id);
     });
 
-    // close mobile menu
     mobileMenu.classList.add("hidden");
     menuBtn.textContent = "☰";
     menuBtn.setAttribute("aria-expanded", "false");
@@ -591,7 +784,7 @@
   }
 
   /* =========================================================
-     ALPHABET — RANDOM LETTERS
+     ALPHABET
      ========================================================= */
   function makeLetterCard({ letter, name }, isLarge) {
     const btn = document.createElement("button");
@@ -646,7 +839,7 @@
   generateBtn.addEventListener("click", renderLetters);
 
   /* =========================================================
-     WORDS — RANDOM PRACTICE
+     WORDS
      ========================================================= */
   function makeWordCard(word, isLarge) {
     const btn = document.createElement("button");
@@ -705,9 +898,6 @@
   });
   wordGenerateBtn.addEventListener("click", renderWords);
 
-  /* =========================================================
-     WORDS — FULL LIST + SEARCH
-     ========================================================= */
   function renderWordList(filter = "") {
     const q = filter.trim().toLowerCase();
     const list = WORDS.filter(w =>
@@ -746,6 +936,103 @@
   wordSearchEl.addEventListener("input", e => renderWordList(e.target.value));
 
   /* =========================================================
+     SENTENCES — RANDOM + LIST
+     ========================================================= */
+  function makeSentenceCard(sentence, isLarge) {
+    const btn = document.createElement("button");
+    btn.className = isLarge
+      ? "group relative flex w-full max-w-xl flex-col items-center justify-center rounded-2xl bg-white/5 px-6 py-10 ring-1 ring-white/10 transition hover:bg-white/10 hover:ring-amber-300/40 active:scale-95 text-center"
+      : "group relative flex flex-col items-center justify-center rounded-2xl bg-white/5 px-4 py-6 ring-1 ring-white/10 transition hover:bg-white/10 hover:ring-amber-300/40 active:scale-95 text-center";
+
+    btn.innerHTML = `
+      <span class="${isLarge ? "text-3xl" : "text-xl"} font-bold leading-snug text-white">${sentence.de}</span>
+      <span class="card-reveal mt-3 w-full flex-col items-center gap-1.5 text-center" style="display:none">
+        <span class="block text-sm font-semibold text-white/85">${sentence.en}</span>
+        <span class="block text-sm text-amber-300" dir="rtl">${sentence.ar}</span>
+      </span>
+      <span class="mt-3 text-[10px] uppercase tracking-wider text-white/30 group-hover:text-white/60">
+        tap to reveal &amp; hear
+      </span>
+    `;
+
+    const reveal = btn.querySelector(".card-reveal");
+
+    btn.addEventListener("click", () => {
+      if (reveal.style.display === "none") {
+        reveal.style.display = "flex";
+        reveal.classList.add("fade-up");
+      }
+      speak(sentence.de);
+
+      btn.classList.remove("tap");
+      void btn.offsetWidth;
+      btn.classList.add("tap");
+    });
+
+    return btn;
+  }
+
+  function renderSentences() {
+    const items = pickRandomItems(SENTENCES, selectedSentenceCount);
+    sentenceResultsEl.innerHTML = "";
+
+    if (items.length === 1) {
+      sentenceResultsEl.className = "mt-6 flex justify-center";
+      sentenceResultsEl.appendChild(makeSentenceCard(items[0], true));
+    } else {
+      sentenceResultsEl.className = "mt-6 grid grid-cols-1 gap-3 md:grid-cols-2";
+      items.forEach(s => sentenceResultsEl.appendChild(makeSentenceCard(s, false)));
+    }
+  }
+
+  const scountBtns = document.querySelectorAll(".scount-btn");
+  scountBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      selectedSentenceCount = parseInt(btn.dataset.scount, 10);
+      setActiveCount(btn, scountBtns);
+      renderSentences();
+    });
+  });
+  sentenceGenerateBtn.addEventListener("click", renderSentences);
+
+  function renderSentenceList(filter = "") {
+    const q = filter.trim().toLowerCase();
+    const list = SENTENCES.filter(s =>
+      !q ||
+      s.de.toLowerCase().includes(q) ||
+      s.en.toLowerCase().includes(q) ||
+      s.ar.includes(q)
+    );
+
+    sentenceListEl.innerHTML = "";
+
+    if (!list.length) {
+      sentenceListEl.innerHTML =
+        '<p class="col-span-full py-6 text-center text-sm text-white/40">No sentences found 🤔</p>';
+      return;
+    }
+
+    list.forEach(sentence => {
+      const btn = document.createElement("button");
+      btn.className =
+        "group rounded-xl bg-white/5 p-3 text-left ring-1 ring-white/10 transition " +
+        "hover:bg-white/10 hover:ring-amber-300/40 active:scale-95";
+      btn.innerHTML = `
+        <div class="flex items-start justify-between gap-2">
+          <span class="font-bold text-amber-300 leading-snug">${sentence.de}</span>
+          <span class="shrink-0 text-[10px] text-white/30 group-hover:text-white/70">🔊</span>
+        </div>
+        <div class="mt-1 text-xs text-white/70">${sentence.en}</div>
+        <div class="mt-1 text-xs text-white/50" dir="rtl">${sentence.ar}</div>
+      `;
+      btn.addEventListener("click", () => speak(sentence.de));
+      sentenceListEl.appendChild(btn);
+    });
+  }
+
+  sentenceSearchEl.addEventListener("input", e => renderSentenceList(e.target.value));
+
+  /* =========================================================
      ALPHABET GRID
      ========================================================= */
   ALPHABET.forEach(({ letter, name }) => {
@@ -774,11 +1061,14 @@
   });
 
   /* =========================================================
-     SPACE BAR → regenerate letters (only when alphabet view is active)
+     SPACE BAR → regenerate letters (only in alphabet view)
      ========================================================= */
   document.addEventListener("keydown", e => {
     if (e.code !== "Space") return;
-    if (document.activeElement === wordSearchEl) return;
+    if (
+      document.activeElement === wordSearchEl ||
+      document.activeElement === sentenceSearchEl
+    ) return;
 
     const alphabetVisible = !document.getElementById("alphabet").classList.contains("hidden");
     if (alphabetVisible) {
@@ -792,10 +1082,13 @@
      ========================================================= */
   setActiveCount(countBtns[0], countBtns);
   setActiveCount(wcountBtns[0], wcountBtns);
+  setActiveCount(scountBtns[0], scountBtns);
   renderLetters();
   renderWords();
   renderWordList();
-  route();          // show correct view based on URL hash
+  renderSentences();
+  renderSentenceList();
+  route();
 </script>
 </body>
 </html>
