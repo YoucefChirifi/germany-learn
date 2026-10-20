@@ -268,7 +268,6 @@
         <p class="mt-1 text-sm text-white/60">Everyday sentences you’ll actually use — with English &amp; Arabic translations.</p>
       </header>
 
-      <!-- Random sentence practice -->
       <div class="rounded-3xl border border-white/20 bg-white/10 p-6 shadow-2xl backdrop-blur sm:p-8">
         <div class="flex flex-wrap items-center justify-between gap-2">
           <h2 class="text-lg font-bold text-white/80">🎲 Random Sentence Practice</h2>
@@ -293,7 +292,6 @@
         <div id="sentenceResults" class="mt-6 min-h-[120px]"></div>
       </div>
 
-      <!-- Full sentence list -->
       <div class="rounded-3xl border border-white/20 bg-white/10 p-6 shadow-xl backdrop-blur">
         <div class="flex flex-wrap items-center justify-between gap-2">
           <h2 class="text-xl font-bold">📚 All 100 Sentences</h2>
@@ -696,14 +694,23 @@
   let selectedSentenceCount = 1;
 
   /* =========================================================
-     SPEECH (Web Speech API – German voice)
+     SPEECH (Web Speech API – Mobile-Optimized)
      ========================================================= */
   let germanVoice = null;
+  let voicesReady = false;
 
+  // Retry loading voices until they are available
   function loadVoices() {
+    if (!("speechSynthesis" in window)) return;
     const voices = window.speechSynthesis.getVoices();
-    germanVoice =
-      voices.find(v => v.lang && v.lang.toLowerCase().startsWith("de")) || null;
+    if (voices.length > 0) {
+      germanVoice =
+        voices.find(v => v.lang && v.lang.toLowerCase().startsWith("de")) || null;
+      voicesReady = true;
+    } else {
+      // If voices aren't loaded yet, try again shortly
+      setTimeout(loadVoices, 100);
+    }
   }
 
   if ("speechSynthesis" in window) {
@@ -716,13 +723,25 @@
       alert("Sorry, your browser does not support speech.");
       return;
     }
+    // Stop any speech that is currently in progress
     window.speechSynthesis.cancel();
 
     const utter = new SpeechSynthesisUtterance(text);
-    utter.lang  = "de-DE";
-    utter.rate  = 0.85;
+
+    // 1. Try the standard 'de-DE' format
+    utter.lang = "de-DE";
+    utter.rate = 0.85;
     utter.pitch = 1;
-    if (germanVoice) utter.voice = germanVoice;
+
+    // 2. If a German voice was found, try to use it
+    if (germanVoice) {
+      utter.voice = germanVoice;
+    }
+
+    // 3. If the voice is still null, try the underscore format as a fallback
+    if (!germanVoice) {
+      utter.lang = "de_DE";
+    }
 
     window.speechSynthesis.speak(utter);
   }
@@ -936,7 +955,7 @@
   wordSearchEl.addEventListener("input", e => renderWordList(e.target.value));
 
   /* =========================================================
-     SENTENCES — RANDOM + LIST
+     SENTENCES
      ========================================================= */
   function makeSentenceCard(sentence, isLarge) {
     const btn = document.createElement("button");
